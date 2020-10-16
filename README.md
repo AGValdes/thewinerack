@@ -1,2 +1,2 @@
 # thewinerack
-An application that help you pair wine with food at home!
+An application that helps you pair wine with food at home!
