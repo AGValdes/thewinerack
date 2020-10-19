@@ -9,3 +9,5 @@ Audrena Vacirca, Nathan Cox, Simon Panek, Ameilia Valdes
 
 A simple application to access the advice of a professional sommelier at any time of day.
 
+![WireFrame Image](img/wireframe.png)
+
