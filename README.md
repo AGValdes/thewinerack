@@ -11,3 +11,6 @@ A simple application to access the advice of a professional sommelier at any tim
 
 ![WireFrame Image](img/wireframe.png)
 
+![Domain Model Chart](img/domainmodel.jpg)
+
+[Trello Board](https://trello.com/b/V2J1740R/the-wine-rack)
