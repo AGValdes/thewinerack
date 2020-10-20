@@ -7,17 +7,55 @@ main {
 body {
   width: 960px;
   margin: auto;
-  background-color: burlywood;
+  background-color:rgb(37, 19, 24);
+  
 }
 #choiceButtons {
   width: 960px;
   height: 700px;
+ 
 }
 #choiceButtons a {
   color:white;
+  font-family: 'Pinyon Script', cursive;
+  font-size: 2em;
+ justify-content: center; 
+  display: flex;
+  /* border: white 1px dotted; */
+  width: 200px;
+  float: left;
+  margin-left: 28px;
+  margin-top: 50px;
+  transition: 1s;
 }
 
+#choiceButtons a:hover {
+background-color:rgb(37, 19, 24) ;
+}
 a {
   text-decoration: none;
   color: black;
+   
+}
+
+h1 {
+  color: white;
+margin-top: .5em;
+  text-align: center;
+  font-family: 'Open Sans Condensed', sans-serif;
+  /* font-family: 'Pinyon Script', cursive; */
+  font-size: 4em;
+  padding-top: 5px;
+  text-shadow: black 5px 5px;
+}
+
+#wineRack {
+  font-family: Arial, Helvetica, sans-serif;
+  color: grey;
+  float: right;
+  background-color: rgb(112, 111, 111, .5);
+}
+
+#redLink {
+margin-top: 20px;
 }
