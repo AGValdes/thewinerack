@@ -1,0 +1,23 @@
+
+main {
+  background-image: url("../img/wineglasses.jpg");
+  background-size: cover;
+}
+
+body {
+  width: 960px;
+  margin: auto;
+  background-color: burlywood;
+}
+#choiceButtons {
+  width: 960px;
+  height: 700px;
+}
+#choiceButtons a {
+  color:white;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
