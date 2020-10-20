@@ -132,5 +132,5 @@ function getMealPlans() {
 }
 
 //append submit button to delete selected meal plans from local storage.
-//add comment text boxes, append submit button for upvotes.
+//add comment text boxes, append submit button for upvotes.s
 
