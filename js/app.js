@@ -1,24 +1,32 @@
 'use strict';
+
+var allUsers = [];
+
 var allWines = [];
 var allMealPlans = [];
-var allUsers = [];
-// // get user name input
-// function getUserName() {
-//   var userName = document.getElementById('nameInput').value;
-//   //need info from html
-//   var userNameFromLocalStorage = localStorage.getItem(userName);
-//   var parsedUserName = JSON.parse(userNameFromLocalStorage);
-//   if (userNameFromLocalStorage) {
+var userName;
 
-//   } else {
-//     JSON.stringify(userName)
-//     //missing some info to complete this function
-//     localStorage.setItem(userName),
-//       //instantiate our wine categories
-//       instantiateWineObjects();
-//   }
-// }
+var wineSelection = document.getElementById('redWineList');
+// console.log(wineSelection);
+// get user name input
+function checkNewUser() {
+  
+  var userNameFromLocalStorage = localStorage.getItem(userName);
+
+  if (userNameFromLocalStorage) {
+    var parsedUserName = JSON.parse(userNameFromLocalStorage);
+  
+
+  } else {
+    JSON.stringify(userName);
+    //missing some info to complete this function
+    localStorage.setItem(userName);
+    //instantiate our wine categories
+    instantiateWineObjects();
+  }
+}
 // idOfForm.addEventListener('submit', getUserName);
+instantiateWineObjects();
 
 // check local storage for that input
 // if user name is in local storage, pull existing info
@@ -26,18 +34,19 @@ var allUsers = [];
 // pick one of four options that are wine category nav links
 
 // create a constructor that makes user Objects
-function User(userName, allMealPlans) {
+function User(userName, allMealPlans, allWines) {
   this.name = userName;
   this.allMealPlans = allMealPlans;
+  this.allWines = allWines;
 
   allUsers.push(this);
 }
 /// properties: name, meals array.
 
 // create a constructor that makes wine objects
-function Wine(catagory, varietal, protein = [], veg = [], smallPlate = [], dessert = []) {
+function Wine(category, varietal, protein = [], veg = [], smallPlate = [], dessert = []) {
 
-  this.catagory = catagory;
+  this.category = category;
   this.varietal = varietal;
   this.protein = protein;
   this.veg = veg;
@@ -66,7 +75,6 @@ function instantiateWineObjects() {
   new Wine('bubbles', 'prosecco', ['shell fish', 'poultry'], 'potatoes', ['french fries', 'calamari', 'fried veggie fritters'], ['cheese cake', 'fruit tart', 'cheese plate']);
   new Wine('bubbles', 'champagne', ['shell fish', 'poultry'], 'potatoes', ['french fries', 'calamari', 'fried veggie fritters'], ['raspberry cheese cake', 'fruit tart', 'cheese plate']);
 }
-instantiateWineObjects();
 ///properties: categories, protein[], veg[], small plate[], dessert[]
 
 //create a constructor that makes meal plan objects
@@ -83,28 +91,31 @@ function MealPlans(wineSelection, proteinSelection, vegSelection, smallPlateSele
 }
 ///properties: wine selection, protein, veg, small plate, dessert, comment, user rating
 
-//display an unordered list of wines that match that category
-function renderWineList() {
-  //catagory selection from the home page
-  //set up event listener on each category of the home page
-  // on click, capture what catagory is in a global variable, and follow link to next page.
-  //for loop over the length of the allWines array, looking for that catagory variable.
-  //append button for each varietal
-  //call varietalSelection function
-  //turn off event listener
-}
-//event handler for click of a varietal
-winebutton.addEventListener('click', varietalSelection)
+function clickWineCategory(event) {
+  userName = prompt('Username');
 
-function varietalSelection() {
-  //capture the varietal in a variable
-  // loop through all wines, looking for that varietal
+}
+
+// The call-back function for our home-page wine button listener.
+function varietalSelection(event) {
+  var captureWineCategory = event.target.value;
+  for (var i = 0; i < allWines.length; i++) {
+    if (captureWineCategory === allWines[i].varietal) {
+      renderFoodOptions();
+    }
+  //turn off event listener (maybe . . . review later)
+  }
+}
+
+function renderFoodOptions() {
   // append protein, veg, sp, dessert property values as radio button form
   //call submitSelections function.
   //turn off listener.
+
 }
 
-foodItemForm.addEventListener('submit', submitSelections)
+
+// foodItemForm.addEventListener('submit', submitSelections)
 
 function submitSelections() {
   //capture all selections as an array, and run through meal plan constructor
@@ -115,12 +126,12 @@ function submitSelections() {
 
 function renderMealPlan() {
   //take the newly constructed meal plan object
-  // append to the page 
+  // append to the page
 }
 // each item in the list is a button with an event listener to trigger the next step
-// upon click, a list of items from each food catagory is appended to the page as a radio button
+// upon click, a list of items from each food category is appended to the page as a radio button
 // user will make selection of one item per food category
-// master submit button will take each selection, and append them as a string to the final meal plan div and push to local storage for use in the winerack/pantry whatever.
+// master submit button will take each selection, and append them as a string to the final meal plan div and push to local storage for use in the wine rack/pantry whatever.
 
 //on pantry page, pull meal plans from local storage and append them to the page for viewing with radio buttons
 function getMealPlans() {
@@ -129,8 +140,18 @@ function getMealPlans() {
   //parse them from JSON
   // push into the myMealPlans array
   // loop over array, appending each object to the page as a radio button form
+  // Call the mealPlanDelete function.
+}
+
+function mealPlanDelete() {
+  // Add an event listener for the radio or delete button.
+  // Delete or update, as required.
+  // Push to local storage.
 }
 
 //append submit button to delete selected meal plans from local storage.
-//add comment text boxes, append submit button for upvotes.s
+//add comment text boxes, append submit button for upvotes.
+
+// Executable functions
+wineSelection.addEventListener('click', varietalSelection);
 
