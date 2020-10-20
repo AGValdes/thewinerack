@@ -1,1 +1,12 @@
 
+fieldset {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.food-category {
+  min-height: 250px;
+  min-width: 250px;
+  border: 1px solid orange;
+}
