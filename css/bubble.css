@@ -20,9 +20,26 @@ fieldset {
   padding: 10px 0px 0px 10px;
 }
 
+section a {
+  color: white;
+  text-decoration: none;
+  font-family: 'Open Sans Condensed', sans-serif;
+}
 h1 a{
   color: white;
   text-decoration: none;
+  font-size: 4em;
+  font-family: 'Open Sans Condensed', sans-serif;
+  
+}
+header{
+  text-align: center;
+  padding-top: 25px;
+  margin-top: .5em;
+}
+#winerack{
+  display:flex;
+  justify-content: flex-end;
 }
 
 #categoryTitle {
@@ -41,7 +58,7 @@ main {
   background-size: cover;
   /* background-color: gray; */
   border: 1px solid black;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   background-color: #722F37;
   width: 960px;
 }
@@ -80,32 +97,6 @@ margin-top: 20px;
   min-height: 600px;
   flex-direction: row;
   /* border: 1px solid black; */
-  position: relative;
-}
-#submitbutton{
-  position: absolute;
-  top: 608px;
-  left: 225px;
-  font-family: 'Open Sans Condensed', sans-serif;
-  width: 175px;
-  height: 50px;
-  font-size: 22px;
-  border-radius: 15px;
-  /* background-color: #F7E7CE; */
-  background-color: #251318; 
-  border: none;
-  color: white;
-  transition: background-color 0.5s ease;
-}
-#submitbutton:hover {
-  background-color: #f7dcaf;
-  color: #251318;
-}
-#submitbutton:focus{
-  background-color: #f7dcaf;
-  color: #251318;
-  outline: none;
-
 }
 
 #foodItems1 {
@@ -173,7 +164,31 @@ margin-top: 20px;
 
 }
 
-#submit-button {
-display: block;
+
+#submitbutton{
+  position: absolute;
+  top: 775px;
+  left: 530px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  width: 175px;
+  height: 50px;
+  font-size: 22px;
+  border-radius: 15px;
+  /* background-color: #F7E7CE; */
+  background-color: #251318; 
+  border: none;
+  color: white;
+  transition: background-color 0.5s ease;
 }
+#submitbutton:hover {
+  background-color: #f7dcaf;
+  color: #251318;
+}
+#submitbutton:focus{
+  background-color: #f7dcaf;
+  color: #251318;
+  outline: none;
+
+}
+
 
