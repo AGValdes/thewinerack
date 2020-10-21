@@ -5,19 +5,19 @@ var allUsers = [];
 var allWines = [];
 var allMealPlans = [];
 var userName;
-
+var mealArray = [];
 var wineSelection = document.getElementById('redWineList');
-var foodParent = document.getElementById('food-parent');
-
+var foodForm = document.getElementById('food-parent');
+var allWinesChosen = [];
 // console.log(wineSelection);
 // get user name input
 function checkNewUser() {
-  
+
   var userNameFromLocalStorage = localStorage.getItem(userName);
 
   if (userNameFromLocalStorage) {
     var parsedUserName = JSON.parse(userNameFromLocalStorage);
-  
+
 
   } else {
     JSON.stringify(userName);
@@ -35,8 +35,8 @@ instantiateWineObjects();
 // if not, create new key for user
 // pick one of four options that are wine category nav links
 
-// create a constructor that makes user Objects
-function User(userName, allMealPlans, allWines) {
+// this function takes in the user's name, all of their already established meal plans, and all of the available wine choices, and turns that into one packaged object thing. We will eventually be pushing these object into local storage, so we can pull them out on the personal page.
+function User(userName, allMealPlans, allWinesChosen) {
   this.name = userName;
   this.allMealPlans = allMealPlans;
   this.allWines = allWines;
@@ -104,9 +104,13 @@ function varietalSelection(event) {
   for (var i = 0; i < allWines.length; i++) {
     if (captureWineCategory === allWines[i].varietal) {
       renderFoodOptions(i);
-      // console.log(i);
+      allWinesChosen.push(captureWineCategory);
+      // console.log(allWines[i].varietal);
+      mealArray = [];
+      mealArray.push(allWines[i].varietal);
+      console.log(mealArray);
     }
-  //turn off event listener (maybe . . . review later)
+    //turn off event listener (maybe . . . review later)
   }
   // console.log(captureWineCategory);
   // console.log(i);
@@ -122,7 +126,11 @@ function renderFoodOptions(i) {
     var radioLabel = document.createElement('label');
     radioLabel.textContent = protein[j];
     var foodChild = document.createElement('input');
+    foodChild.setAttribute('value', protein[j]);
     foodChild.setAttribute('type', 'radio');
+    radioLabel.setAttribute('class', 'selectedFood');
+    foodChild.setAttribute('name', protein[j]);
+    foodChild.setAttribute('class', 'foodOption');
     radioLabel.appendChild(foodChild);
     var sectionParent = document.getElementById('protein');
     sectionParent.appendChild(radioLabel);
@@ -133,6 +141,10 @@ function renderFoodOptions(i) {
     radioLabelv.textContent = vegetables[k];
     var foodChildv = document.createElement('input');
     foodChildv.setAttribute('type', 'radio');
+    radioLabelv.setAttribute('class', 'selectedFood');
+    foodChildv.setAttribute('name', 'vegetables');
+    foodChildv.setAttribute('class', 'foodOption');
+    foodChildv.setAttribute('value', vegetables[k]);
     radioLabelv.appendChild(foodChildv);
     var sectionParentv = document.getElementById('vegetables');
     sectionParentv.appendChild(radioLabelv);
@@ -141,8 +153,13 @@ function renderFoodOptions(i) {
   for (var l = 0; l < allWines[i].smallPlate.length; l++) {
     var radioLabelSp = document.createElement('label');
     radioLabelSp.textContent = smallPlates[l];
+
     var foodChildSp = document.createElement('input');
     foodChildSp.setAttribute('type', 'radio');
+    radioLabelSp.setAttribute('class', 'selectedFood');
+    foodChildSp.setAttribute('name', 'smallPlates');
+    foodChildSp.setAttribute('value', smallPlates[l]);
+    foodChildSp.setAttribute('class', 'foodOption');
     radioLabelSp.appendChild(foodChildSp);
     var sectionParentSp = document.getElementById('small-plates');
     sectionParentSp.appendChild(radioLabelSp);
@@ -153,20 +170,52 @@ function renderFoodOptions(i) {
     radioLabeld.textContent = dessert[m];
     var foodChildd = document.createElement('input');
     foodChildd.setAttribute('type', 'radio');
+    radioLabeld.setAttribute('class', 'selectedFood');
+    foodChildd.setAttribute('name', 'dessert');
+    foodChildd.setAttribute('value', dessert[m]);
+    foodChildd.setAttribute('class', 'foodOption');
     radioLabeld.appendChild(foodChildd);
     var sectionParentd = document.getElementById('desserts');
     sectionParentd.appendChild(radioLabeld);
   }
+
   wineSelection.removeEventListener('click', varietalSelection);
+  renderSubmitButton();
+
 }
 
 
+function renderSubmitButton() {
+  // var foodForm = document.getElementById('food-parent');
+  var submitButton = document.createElement('button');
+  submitButton.textContent = 'Submit Your Choices';
+  submitButton.setAttribute('type', 'submit');
+  foodForm.appendChild(submitButton);
+}
 
 
-// foodItemForm.addEventListener('submit', submitSelections)
+// var foodForm = document.getElementsById('food-parent');
+foodForm.addEventListener('submit', submitSelections);
 
-function submitSelections() {
-  //capture all selections as an array, and run through meal plan constructor
+function submitSelections(event) {
+  //we want the computer to take all the selections and push them into an array
+  event.preventDefault();
+  var myRadio = document.getElementsByName('vegetables');
+  console.log(myRadio);
+  // var inputButton = document.getElementsByClassName('foodOption');
+  console.log(event);
+  // var mealArray = [];
+  for (var i = 0; i < event.target.length; i++) {
+    if (event.target[i].checked === true) {
+      // console.log(event.target[i].value);
+      mealArray.push(event.target[i].value);
+      console.log(mealArray);
+    }
+  }
+  // var userSelection = event.target.child;
+  // console.log(userSelection);
+  // and run through meal plan constructor
+
   //save this to local storage
   //call the renderMealPlan function
   //turn off listener
@@ -202,4 +251,3 @@ function mealPlanDelete() {
 
 // Executable functions
 wineSelection.addEventListener('click', varietalSelection);
-
