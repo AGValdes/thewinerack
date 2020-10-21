@@ -4,32 +4,18 @@ var allUsers = [];
 
 var allWines = [];
 var allMealPlans = [];
-var userName;
+var userMeal;
 var mealArray = [];
 var wineSelection = document.getElementById('redWineList');
 var submitButton = document.createElement('button');
+var newUserSwitch = true;
 
 var foodForm = document.getElementById('food-parent');
-// var allWinesChosen = [];
-// console.log(wineSelection);
-// get user name input
-function checkNewUser() {
-
-  var userNameFromLocalStorage = localStorage.getItem(userName);
-
-  if (userNameFromLocalStorage) {
-    var parsedUserName = JSON.parse(userNameFromLocalStorage);
 
 
-  } else {
-    JSON.stringify(userName);
-    //missing some info to complete this function
-    localStorage.setItem(userName);
-    //instantiate our wine categories
-    instantiateWineObjects();
-  }
-}
-// idOfForm.addEventListener('submit', getUserName);
+
+
+
 
 // check local storage for that input
 // if user name is in local storage, pull existing info
@@ -38,13 +24,7 @@ function checkNewUser() {
 
 // this function takes in the user's name, all of their already established meal plans, and all of the available wine choices, and turns that into one packaged object thing. We will eventually be pushing these object into local storage, so we can pull them out on the personal page.
 
-// function User(userName, allMealPlans, allWinesChosen) {
-//   this.name = userName;
-//   this.allMealPlans = allMealPlans;
-//   this.allWines = allWines;
 
-//   allUsers.push(this);
-// }
 /// properties: name, meals array.
 
 // create a constructor that makes wine objects
@@ -82,27 +62,26 @@ function instantiateWineObjects() {
 ///properties: categories, protein[], veg[], small plate[], dessert[]
 
 //create a constructor that makes meal plan objects
-function MealPlans(wineSelection, proteinSelection, vegSelection, smallPlateSelection, dessertSelection, comment = 0, userRating = 0) {
-  this.wineSelection = wineSelection;
-  this.proteinSelection = proteinSelection;
-  this.vegSelection = vegSelection;
-  this.smallPlateSelection = smallPlateSelection;
-  this.dessertSelection = dessertSelection;
-  this.comment = comment;
-  this.userRating = userRating;
+// function MealPlans(wineSelection, proteinSelection, vegSelection, smallPlateSelection, dessertSelection, comment = 0, userRating = 0) {
+//   this.wineSelection = wineSelection;
+//   this.proteinSelection = proteinSelection;
+//   this.vegSelection = vegSelection;
+//   this.smallPlateSelection = smallPlateSelection;
+//   this.dessertSelection = dessertSelection;
+//   this.comment = comment;
+//   this.userRating = userRating;
 
-  allMealPlans.push(this);
-}
+//   allMealPlans.push(this);
+//}
 ///properties: wine selection, protein, veg, small plate, dessert, comment, user rating
 
-function clickWineCategory(event) {
-  userName = prompt('Username');
 
-}
 
 // The call-back function for our home-page wine button listener.
 function varietalSelection(event) {
-  var userName = prompt('Enter your username.');
+  // if (newUserSwitch === false) {
+  //   var userName = prompt('Enter your username.');
+  // }
   var captureWineCategory = event.target.value;
   for (var i = 0; i < allWines.length; i++) {
     if (captureWineCategory === allWines[i].varietal) {
@@ -111,8 +90,8 @@ function varietalSelection(event) {
       // allWinesChosen.push(captureWineCategory);
       // console.log(allWines[i].varietal);
 
-      mealArray = [];
-      mealArray.push(userName);
+      // mealArray = [];
+      // mealArray.push(userName);
       mealArray.push(allWines[i].varietal);
     }
   }
@@ -229,27 +208,67 @@ function submitSelections(event) {
 
 }
 
-function initiateStorage() {
-  var mealArrayStringified = JSON.stringify(mealArray);
-  localStorage.setItem('userName', mealArrayStringified);
+function initiateStorage() { //other option might be pull from local storage here and push mealArray into all meals prior to pushing to storage
+
+  var oldMealsFromStorage = localStorage.getItem('allUserMeals');
+  var parsedOldMealsFromStorage = JSON.parse(oldMealsFromStorage);
+
+  console.log('parsedOldMealsFromStorage', parsedOldMealsFromStorage);
+
+  if (parsedOldMealsFromStorage) {
+
+    allMealPlans = parsedOldMealsFromStorage;
+  }
+  allMealPlans.push(mealArray);
+
+
+
+  var stringifyAllMealPlans = JSON.stringify(allMealPlans);
+  localStorage.setItem('allUserMeals', stringifyAllMealPlans);
+
+  console.log('allMealPlans', allMealPlans);
+
+  //var mealArrayStringified = JSON.stringify(mealArray);
+  var allMealPlansStringified = JSON.stringify(allMealPlans);
+  //localStorage.setItem('userMeal', mealArrayStringified);
+  localStorage.setItem('allUserMeals', allMealPlansStringified);
 }
 
 function renderMealPlan() {
-  var retrieveStorage = localStorage.getItem('userName');
+  var retrieveStorage = localStorage.getItem('allUserMeals');
   var parsedStorage = JSON.parse(retrieveStorage);
 
   var theadParent = document.getElementById('theadParent');
-  var trElement = document.createElement('tr');
-  for (var i = 0; i < 6; i++) {
-    var tdElement = document.createElement('td');
-    tdElement.textContent = parsedStorage[i];
-    trElement.appendChild(tdElement);
-    console.log(parsedStorage);
+
+  console.log('parsedStorage.length', parsedStorage.length);
+  console.log('parsed at 0:', parsedStorage[0]);
+
+  for (var i = 0; i < parsedStorage.length; i++) {
+    var trElement = document.createElement('tr');
+    for (var j = 0; j < 5; j++) {
+
+      var tdElement = document.createElement('td');
+      tdElement.textContent = parsedStorage[i][j];
+      trElement.appendChild(tdElement);
+      console.log('parsedStorage[i][j]', parsedStorage[i][j], 'i:', i, 'j', j);
+    }
+    theadParent.appendChild(trElement);
 
   }
+  // var retrieveStorage = localStorage.getItem('userMeal');
+  // var parsedStorage = JSON.parse(retrieveStorage);
+
+  // var theadParent = document.getElementById('theadParent');
+  // var trElement = document.createElement('tr');
+  // for (var i = 0; i < 6; i++) {
+  //   var tdElement = document.createElement('td');
+  //   tdElement.textContent = parsedStorage[i];
+  //   trElement.appendChild(tdElement);
+  //   console.log(parsedStorage);
+
+  // }
   console.log(theadParent);
   console.log(trElement);
-  theadParent.appendChild(trElement);
 }
 // each item in the list is a button with an event listener to trigger the next step
 // upon click, a list of items from each food category is appended to the page as a radio button
@@ -257,14 +276,7 @@ function renderMealPlan() {
 // master submit button will take each selection, and append them as a string to the final meal plan div and push to local storage for use in the wine rack/pantry whatever.
 
 //on pantry page, pull meal plans from local storage and append them to the page for viewing with radio buttons
-function getMealPlans() {
-  var myMealPlans = [];
-  //get stored meal plans from local storage
-  //parse them from JSON
-  // push into the myMealPlans array
-  // loop over array, appending each object to the page as a radio button form
-  // Call the mealPlanDelete function.
-}
+
 
 function mealPlanDelete() {
   // Add an event listener for the radio or delete button.
@@ -272,8 +284,8 @@ function mealPlanDelete() {
   // Push to local storage.
 }
 
-function determineHTMLPage () {
-  if(document.URL.includes('reds.html') || document.URL.includes('whites.html') || document.URL.includes('bubbles.html') || document.URL.includes('desserts.html')) {
+function determineHTMLPage() {
+  if (document.URL.includes('reds.html') || document.URL.includes('whites.html') || document.URL.includes('bubbles.html') || document.URL.includes('desserts.html')) {
     wineSelection.addEventListener('click', varietalSelection);
     foodForm.addEventListener('submit', submitSelections);
   }
@@ -287,6 +299,7 @@ function turnOffEventListeners() {
 function runRenderMealPlan() {
   if (document.URL.includes('yourWineRack.html')) {
     renderMealPlan();
+
   }
 
 }
