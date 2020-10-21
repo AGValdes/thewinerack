@@ -7,6 +7,7 @@ var allMealPlans = [];
 var userName;
 var mealArray = [];
 var wineSelection = document.getElementById('redWineList');
+
 var foodForm = document.getElementById('food-parent');
 var allWinesChosen = [];
 // console.log(wineSelection);
@@ -112,6 +113,7 @@ function varietalSelection(event) {
     }
     //turn off event listener (maybe . . . review later)
   }
+
   // console.log(captureWineCategory);
   // console.log(i);
 }
@@ -124,13 +126,18 @@ function renderFoodOptions(i) {
 
   for (var j = 0; j < allWines[i].protein.length; j++) {
     var radioLabel = document.createElement('label');
+    radioLabel.setAttribute('class', 'radioLabel'); //added radio label class
     radioLabel.textContent = protein[j];
     var foodChild = document.createElement('input');
+
+    foodChild.setAttribute('class', 'radioButton'); //added radio button class
+
     foodChild.setAttribute('value', protein[j]);
+
     foodChild.setAttribute('type', 'radio');
     radioLabel.setAttribute('class', 'selectedFood');
     foodChild.setAttribute('name', protein[j]);
-    foodChild.setAttribute('class', 'foodOption');
+   // foodChild.setAttribute('class', 'foodOption');
     radioLabel.appendChild(foodChild);
     var sectionParent = document.getElementById('protein');
     sectionParent.appendChild(radioLabel);
@@ -138,12 +145,14 @@ function renderFoodOptions(i) {
 
   for (var k = 0; k < allWines[i].veg.length; k++) {
     var radioLabelv = document.createElement('label');
+    radioLabelv.setAttribute('class', 'radioLabel'); //added radio label class
     radioLabelv.textContent = vegetables[k];
     var foodChildv = document.createElement('input');
+    foodChildv.setAttribute('class', 'radioButton'); //added radio button class
     foodChildv.setAttribute('type', 'radio');
     radioLabelv.setAttribute('class', 'selectedFood');
     foodChildv.setAttribute('name', 'vegetables');
-    foodChildv.setAttribute('class', 'foodOption');
+   // foodChildv.setAttribute('class', 'foodOption');
     foodChildv.setAttribute('value', vegetables[k]);
     radioLabelv.appendChild(foodChildv);
     var sectionParentv = document.getElementById('vegetables');
@@ -152,14 +161,16 @@ function renderFoodOptions(i) {
 
   for (var l = 0; l < allWines[i].smallPlate.length; l++) {
     var radioLabelSp = document.createElement('label');
+    radioLabelSp.setAttribute('class', 'radioLabel'); //added radio label class
     radioLabelSp.textContent = smallPlates[l];
 
     var foodChildSp = document.createElement('input');
+    foodChildSp.setAttribute('class', 'radioButton'); //added radio button class
     foodChildSp.setAttribute('type', 'radio');
     radioLabelSp.setAttribute('class', 'selectedFood');
     foodChildSp.setAttribute('name', 'smallPlates');
     foodChildSp.setAttribute('value', smallPlates[l]);
-    foodChildSp.setAttribute('class', 'foodOption');
+   // foodChildSp.setAttribute('class', 'foodOption');
     radioLabelSp.appendChild(foodChildSp);
     var sectionParentSp = document.getElementById('small-plates');
     sectionParentSp.appendChild(radioLabelSp);
@@ -167,13 +178,15 @@ function renderFoodOptions(i) {
 
   for (var m = 0; m < allWines[i].dessert.length; m++) {
     var radioLabeld = document.createElement('label');
+    radioLabeld.setAttribute('class', 'radioLabel'); //added radio label class
     radioLabeld.textContent = dessert[m];
     var foodChildd = document.createElement('input');
+    foodChildd.setAttribute('class', 'radioButton'); //added radio button class
     foodChildd.setAttribute('type', 'radio');
     radioLabeld.setAttribute('class', 'selectedFood');
     foodChildd.setAttribute('name', 'dessert');
     foodChildd.setAttribute('value', dessert[m]);
-    foodChildd.setAttribute('class', 'foodOption');
+    //foodChildd.setAttribute('class', 'foodOption');
     radioLabeld.appendChild(foodChildd);
     var sectionParentd = document.getElementById('desserts');
     sectionParentd.appendChild(radioLabeld);
