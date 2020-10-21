@@ -4,20 +4,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>White Wines</title>
+  <title>Red Wine</title>
   <link href="../css/reset.css" rel="stylesheet">
-  <link href="" rel="stylesheet">
+  <link href="../css/red.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
 </head>
 
 <body>
   <header>
-    <h1><a href="../index.html">The Wine Rack</a></h1>
+    <h1 id="categoryTitle"><a href="../index.html">The White Wine Rack</a></h1>
     <section>
-      <a href="yourWineRack.html">Your Wine Rack</a>
+      <a id="wineRack" href="yourWineRack.html">Your Wine Rack</a>
     </section>
   </header>
-  <main></main>
-  <footer></footer>
+  <main>
+    <section id="formSection">
+      <form>
+        <fieldset>
+          <div id="redWineList">
+            <label><input class="varietal" type="button" value="Chardonnay"> </label>
+            <label><input class="varietal" type="button" value="Riesling"></label>
+            <label><input class="varietal" type="button" value="Sauvignon Blanc"></label>
+            <label><input class="varietal" type="button" value="Pinot Gris"></label>
+            <label><input class="varietal" type="button" value="Viognier"></label>
+            <label><input class="varietal" type="button" value="Chenin Blanc"></label>
+          </div>
+        </fieldset>
+      </form>
+      <form id="food-parent" action="yourWineRack.html" type="button" value="Submit">
+        <div id="foodItems1">
+          <section class="food-category" id="protein">Protein</section>
+          <section class="food-category" id="vegetables">Vegetables</section>
+        </div>
+        <div id="foodItems2">
+          <section class="food-category" id="small-plates">Small Plates</section>
+          <section class="food-category" id="desserts">Desserts</section>
+        </div>
+      </form>
+    </section>
+  </main>
+  <footer>
+
+  </footer>
+  <script src='../js/app.js'></script>
+
 </body>
 
 </html>

@@ -41,21 +41,21 @@ function Wine(category, varietal, protein = [], veg = [], smallPlate = [], desse
 }
 
 function instantiateWineObjects() {
-  new Wine('red', 'Cabernet Sauvignon', ['red meat'], ['grilled', 'roasted'], ['burger sliders', 'beef ribs'], ['That doesn\'t pair so well in this area']);
-  new Wine('red', 'Pinot Noir', ['pork'], ['grilled', 'roasted', 'Mushrooms'], ['stuffed mushrooms', 'cured meats'], ['That doesn\'t pair so well in this area']);
-  new Wine('red', 'Merlot', ['red meats', 'pork'], ['That doesn\'t pair so well in this area'], ['beef ribs', 'cheese plate'], ['chocolate cake', 'chocolate truffles', 'cherry cordials']);
-  new Wine('red', 'Grenache', ['pork'], ['grilled', 'roasted'], ['pork belly sliders', 'street tacos'], ['That doesn\'t pair so well in this area']);
-  new Wine('red', 'Chianti', ['red meat'], ['tomatoes', 'italian herbs'], ['pizza', 'mozzerella sticks'], ['That doesn\'t pair so well in this area']);
-  new Wine('red', 'Bordeaux Blend', ['red meat'], ['leafy greens', 'roasted', 'grilled'], ['burger sliders', 'beef ribs'], ['That doesn\'t pair so well in this area']);
-  new Wine('white', 'Chardonnay', ['poultry'], ['corn', 'cauliflower', 'squashes'], ['corn chowder', 'chicken tenders'], ['That doesn\'t pair so well in this area']);
-  new Wine('white', 'Reisling', ['pork'], ['butternut squash', 'pumpkin'], ['hot wings', 'pork belly sliders'], ['That doesn\'t pair so well in this area']);
-  new Wine('white', 'Sauvignon Blanc', ['fish', 'shellfish'], ['leafy greens', 'broccoli'], ['shrimp cocktail', 'mixed green salad'], ['That doesn\'t pair so well in this area']);
-  new Wine('white', 'pinot gris', ['poultry', 'pork'], ['squashes', 'root vegitables'], ['autumn salad', 'hot wings'], ['That doesn\'t pair so well in this area']);
-  new Wine('white', 'Viogner', ['squashes', 'root vegitables'], ['corn chowder', 'chicken tenders'], ['That doesn\'t pair so well in this area']);
+  new Wine('red', 'Cabernet Sauvignon', ['red meat'], ['grilled', 'roasted'], ['burger sliders', 'beef ribs'], ['No pairing']);
+  new Wine('red', 'Pinot Noir', ['pork'], ['grilled', 'roasted', 'Mushrooms'], ['stuffed mushrooms', 'cured meats'], ['No pairing']);
+  new Wine('red', 'Merlot', ['red meats', 'pork'], ['No pairing'], ['beef ribs', 'cheese plate'], ['chocolate cake', 'chocolate truffles', 'cherry cordials']);
+  new Wine('red', 'Grenache', ['pork'], ['grilled', 'roasted'], ['pork belly sliders', 'street tacos'], ['No pairing']);
+  new Wine('red', 'Chianti', ['red meat'], ['tomatoes', 'italian herbs'], ['pizza', 'mozzarella sticks'], ['No pairing']);
+  new Wine('red', 'Bordeaux Blend', ['red meat'], ['leafy greens', 'roasted', 'grilled'], ['burger sliders', 'beef ribs'], ['No pairing']);
+  new Wine('white', 'Chardonnay', ['poultry'], ['corn', 'cauliflower', 'squashes'], ['corn chowder', 'chicken tenders'], ['No pairing']);
+  new Wine('white', 'Riesling', ['pork'], ['butternut squash', 'pumpkin'], ['hot wings', 'pork belly sliders'], ['No pairing']);
+  new Wine('white', 'Sauvignon Blanc', ['fish', 'shellfish'], ['leafy greens', 'broccoli'], ['shrimp cocktail', 'mixed green salad'], ['No pairing']);
+  new Wine('white', 'Pinot Gris', ['poultry', 'pork'], ['squashes', 'root vegetables'], ['autumn salad', 'hot wings'], ['No pairing']);
+  new Wine('white', 'Viognier', ['squashes', 'root vegetables'], ['corn chowder', 'chicken tenders'], ['No pairing']);
   new Wine('white', 'Chenin Blanc', ['poultry', 'pork'], ['squashes', 'sweet potatoes'], ['autumn salad', 'mixed green salad', 'hot wings'], ['apple crumble', 'apple pie']);
-  new Wine('dessert', 'Sauternes', ['That doesn\'t pair so well in this area.'], ['That doesn\'t pair so well in this area.'], ['bleu cheeses'], ['vanilla cake', 'vanilla custard', 'vanilla ice cream']);
-  new Wine('dessert', 'Port', ['That doesn\'t pair so well in this area.'], ['That doesn\'t pair so well in this area.'], ['That doesn\'t pair so well in this area.'], ['chocolate cake', 'brownies', 'chocolate truffles', 'chocolate', 'caramel', 'toffee']);
-  new Wine('bubbles', 'Sparkling Rose', ['salmon'], ['That doesn\'t pair so well in this area.'], ['caesar salad', 'smoked salmon'], ['cheese plate', 'backed brie']);
+  new Wine('dessert', 'Sauternes', ['No pairing'], ['No pairing'], ['bleu cheeses'], ['vanilla cake', 'vanilla custard', 'vanilla ice cream']);
+  new Wine('dessert', 'Port', ['No pairing'], ['No pairing'], ['No pairing'], ['chocolate cake', 'brownies', 'chocolate truffles', 'chocolate', 'caramel', 'toffee']);
+  new Wine('bubbles', 'Sparkling Rosé', ['salmon'], ['No pairing'], ['caesar salad', 'smoked salmon'], ['cheese plate', 'baked brie']);
   new Wine('bubbles', 'Prosecco', ['shell fish', 'poultry'], ['potatoes'], ['french fries', 'calamari', 'fried veggie fritters'], ['cheese cake', 'fruit tart', 'cheese plate']);
   new Wine('bubbles', 'Champagne', ['shell fish', 'poultry'], ['potatoes'], ['french fries', 'calamari', 'fried veggie fritters'], ['raspberry cheese cake', 'fruit tart', 'cheese plate']);
 }
