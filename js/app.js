@@ -7,9 +7,10 @@ var allMealPlans = [];
 var userName;
 var mealArray = [];
 var wineSelection = document.getElementById('redWineList');
+var submitButton = document.createElement('button');
 
 var foodForm = document.getElementById('food-parent');
-var allWinesChosen = [];
+// var allWinesChosen = [];
 // console.log(wineSelection);
 // get user name input
 function checkNewUser() {
@@ -29,7 +30,6 @@ function checkNewUser() {
   }
 }
 // idOfForm.addEventListener('submit', getUserName);
-instantiateWineObjects();
 
 // check local storage for that input
 // if user name is in local storage, pull existing info
@@ -37,13 +37,14 @@ instantiateWineObjects();
 // pick one of four options that are wine category nav links
 
 // this function takes in the user's name, all of their already established meal plans, and all of the available wine choices, and turns that into one packaged object thing. We will eventually be pushing these object into local storage, so we can pull them out on the personal page.
-function User(userName, allMealPlans, allWinesChosen) {
-  this.name = userName;
-  this.allMealPlans = allMealPlans;
-  this.allWines = allWines;
 
-  allUsers.push(this);
-}
+// function User(userName, allMealPlans, allWinesChosen) {
+//   this.name = userName;
+//   this.allMealPlans = allMealPlans;
+//   this.allWines = allWines;
+
+//   allUsers.push(this);
+// }
 /// properties: name, meals array.
 
 // create a constructor that makes wine objects
@@ -101,17 +102,19 @@ function clickWineCategory(event) {
 
 // The call-back function for our home-page wine button listener.
 function varietalSelection(event) {
+  var userName = prompt('Enter your username.');
   var captureWineCategory = event.target.value;
   for (var i = 0; i < allWines.length; i++) {
     if (captureWineCategory === allWines[i].varietal) {
       renderFoodOptions(i);
-      allWinesChosen.push(captureWineCategory);
+
+      // allWinesChosen.push(captureWineCategory);
       // console.log(allWines[i].varietal);
+
       mealArray = [];
+      mealArray.push(userName);
       mealArray.push(allWines[i].varietal);
-      console.log(mealArray);
     }
-    //turn off event listener (maybe . . . review later)
   }
 
   // console.log(captureWineCategory);
@@ -137,7 +140,6 @@ function renderFoodOptions(i) {
     foodChild.setAttribute('type', 'radio');
     radioLabel.setAttribute('class', 'selectedFood');
     foodChild.setAttribute('name', protein[j]);
-   // foodChild.setAttribute('class', 'foodOption');
     radioLabel.appendChild(foodChild);
     var sectionParent = document.getElementById('protein');
     sectionParent.appendChild(radioLabel);
@@ -152,7 +154,6 @@ function renderFoodOptions(i) {
     foodChildv.setAttribute('type', 'radio');
     radioLabelv.setAttribute('class', 'selectedFood');
     foodChildv.setAttribute('name', 'vegetables');
-   // foodChildv.setAttribute('class', 'foodOption');
     foodChildv.setAttribute('value', vegetables[k]);
     radioLabelv.appendChild(foodChildv);
     var sectionParentv = document.getElementById('vegetables');
@@ -170,7 +171,6 @@ function renderFoodOptions(i) {
     radioLabelSp.setAttribute('class', 'selectedFood');
     foodChildSp.setAttribute('name', 'smallPlates');
     foodChildSp.setAttribute('value', smallPlates[l]);
-   // foodChildSp.setAttribute('class', 'foodOption');
     radioLabelSp.appendChild(foodChildSp);
     var sectionParentSp = document.getElementById('small-plates');
     sectionParentSp.appendChild(radioLabelSp);
@@ -200,43 +200,56 @@ function renderFoodOptions(i) {
 
 function renderSubmitButton() {
   // var foodForm = document.getElementById('food-parent');
-  var submitButton = document.createElement('button');
   submitButton.textContent = 'Submit Your Choices';
   submitButton.setAttribute('type', 'submit');
   foodForm.appendChild(submitButton);
 }
 
-
 // var foodForm = document.getElementsById('food-parent');
-foodForm.addEventListener('submit', submitSelections);
 
 function submitSelections(event) {
   //we want the computer to take all the selections and push them into an array
   event.preventDefault();
-  var myRadio = document.getElementsByName('vegetables');
-  console.log(myRadio);
-  // var inputButton = document.getElementsByClassName('foodOption');
-  console.log(event);
+  // var myRadio = document.getElementsByName('vegetables');
+
+  // console.log(event);
   // var mealArray = [];
   for (var i = 0; i < event.target.length; i++) {
     if (event.target[i].checked === true) {
       // console.log(event.target[i].value);
       mealArray.push(event.target[i].value);
-      console.log(mealArray);
+      // console.log(mealArray);
     }
   }
-  // var userSelection = event.target.child;
-  // console.log(userSelection);
-  // and run through meal plan constructor
+  // submitButton.innerHTML = ;
+  initiateStorage();
+  // renderYourWineRack();
+  turnOffEventListeners();
+  window.open('../pages/yourWineRack.html', '_self');
 
-  //save this to local storage
-  //call the renderMealPlan function
-  //turn off listener
+}
+
+function initiateStorage() {
+  var mealArrayStringified = JSON.stringify(mealArray);
+  localStorage.setItem('userName', mealArrayStringified);
 }
 
 function renderMealPlan() {
-  //take the newly constructed meal plan object
-  // append to the page
+  var retrieveStorage = localStorage.getItem('userName');
+  var parsedStorage = JSON.parse(retrieveStorage);
+
+  var theadParent = document.getElementById('theadParent');
+  var trElement = document.createElement('tr');
+  for (var i = 0; i < 6; i++) {
+    var tdElement = document.createElement('td');
+    tdElement.textContent = parsedStorage[i];
+    trElement.appendChild(tdElement);
+    console.log(parsedStorage);
+
+  }
+  console.log(theadParent);
+  console.log(trElement);
+  theadParent.appendChild(trElement);
 }
 // each item in the list is a button with an event listener to trigger the next step
 // upon click, a list of items from each food category is appended to the page as a radio button
@@ -259,8 +272,29 @@ function mealPlanDelete() {
   // Push to local storage.
 }
 
+function determineHTMLPage () {
+  if(document.URL.includes('reds.html') || document.URL.includes('whites.html') || document.URL.includes('bubbles.html') || document.URL.includes('desserts.html')) {
+    wineSelection.addEventListener('click', varietalSelection);
+    foodForm.addEventListener('submit', submitSelections);
+  }
+}
+
+function turnOffEventListeners() {
+  wineSelection.removeEventListener('click', varietalSelection);
+  foodForm.removeEventListener('submit', submitSelections);
+}
+
+function runRenderMealPlan() {
+  if (document.URL.includes('yourWineRack.html')) {
+    renderMealPlan();
+  }
+
+}
+
 //append submit button to delete selected meal plans from local storage.
 //add comment text boxes, append submit button for upvotes.
 
 // Executable functions
-wineSelection.addEventListener('click', varietalSelection);
+instantiateWineObjects();
+determineHTMLPage();
+runRenderMealPlan();
