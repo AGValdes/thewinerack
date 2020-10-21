@@ -4,20 +4,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dessert Wines</title>
+  <title>Bubbles</title>
   <link href="../css/reset.css" rel="stylesheet">
-  <link href="" rel="stylesheet">
+  <link href="../css/red.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
+
 </head>
+
 
 <body>
   <header>
-    <h1><a href="../index.html">The Wine Rack</a></h1>
+    <h1><a href="../index.html">The Bubbly Wine Rack</a></h1>
     <section>
       <a href="yourWineRack.html">Your Wine Rack</a>
     </section>
   </header>
-  <main></main>
+  <main>
+    <section id="formSection">
+      <form>
+        <fieldset>
+          <div id="redWineList">
+            <label><input class="varietal" type="button" value="Port"> </label>
+            <label><input class="varietal" type="button" value="Sauternes"></label>
+          </div>
+        </fieldset>
+      </form>
+      <form id="food-parent" action="yourWineRack.html" type="button" value="Submit">
+        <div id="foodItems1">
+          <section class="food-category" id="protein">Protein</section>
+          <section class="food-category" id="vegetables">Vegetables</section>
+        </div>
+        <div id="foodItems2">
+          <section class="food-category" id="small-plates">Small Plates</section>
+          <section class="food-category" id="desserts">Desserts</section>
+        </div>
+      </form>
+    </section>
+  </main>
   <footer></footer>
+  <script src='../js/app.js'></script>
 </body>
 
 </html>
