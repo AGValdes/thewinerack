@@ -5,17 +5,21 @@ var allUsers = [];
 var allWines = [];
 var allMealPlans = [];
 var userName;
-
+var mealArray = [];
 var wineSelection = document.getElementById('redWineList');
+var submitButton = document.createElement('button');
+
+var foodForm = document.getElementById('food-parent');
+// var allWinesChosen = [];
 // console.log(wineSelection);
 // get user name input
 function checkNewUser() {
-  
+
   var userNameFromLocalStorage = localStorage.getItem(userName);
 
   if (userNameFromLocalStorage) {
     var parsedUserName = JSON.parse(userNameFromLocalStorage);
-  
+
 
   } else {
     JSON.stringify(userName);
@@ -26,21 +30,21 @@ function checkNewUser() {
   }
 }
 // idOfForm.addEventListener('submit', getUserName);
-instantiateWineObjects();
 
 // check local storage for that input
 // if user name is in local storage, pull existing info
 // if not, create new key for user
 // pick one of four options that are wine category nav links
 
-// create a constructor that makes user Objects
-function User(userName, allMealPlans, allWines) {
-  this.name = userName;
-  this.allMealPlans = allMealPlans;
-  this.allWines = allWines;
+// this function takes in the user's name, all of their already established meal plans, and all of the available wine choices, and turns that into one packaged object thing. We will eventually be pushing these object into local storage, so we can pull them out on the personal page.
 
-  allUsers.push(this);
-}
+// function User(userName, allMealPlans, allWinesChosen) {
+//   this.name = userName;
+//   this.allMealPlans = allMealPlans;
+//   this.allWines = allWines;
+
+//   allUsers.push(this);
+// }
 /// properties: name, meals array.
 
 // create a constructor that makes wine objects
@@ -57,23 +61,23 @@ function Wine(category, varietal, protein = [], veg = [], smallPlate = [], desse
 }
 
 function instantiateWineObjects() {
-  new Wine('red', 'cabernet sauvignon', 'red meat', ['grilled', 'roasted'], ['burger sliders', 'beef ribs'], 'That doesn\'t pair so well in this area');
-  new Wine('red', 'pinot noir', 'pork', ['grilled', 'roasted', 'Mushrooms'], ['stuffed mushrooms', 'cured meats'], 'That doesn\'t pair so well in this area');
-  new Wine('red', 'merlot', ['red meats', 'pork'], 'That doesn\'t pair so well in this area', ['beef ribs', 'cheese plate'], ['chocolate cake', 'chocolate truffles', 'cherry cordials']);
-  new Wine('red', 'grenache', 'pork', ['grilled', 'roasted'], ['pork belly sliders', 'street tacos'], 'That doesn\'t pair so well in this area');
-  new Wine('red', 'chianti', 'red meat', ['tomatoes', 'italian herbs'], ['pizza', 'mozzerella sticks'], 'That doesn\'t pair so well in this area');
-  new Wine('red', 'bordeaux blend', 'red meat', ['leafy greens', 'roasted', 'grilled'], ['burger sliders', 'beef ribs'], 'That doesn\'t pair so well in this area');
-  new Wine('white', 'chardonnay', 'poultry', ['corn', 'cauliflower', 'squashes'], ['corn chowder', 'chicken tenders'], 'That doesn\'t pair so well in this area');
-  new Wine('white', 'reisling', 'pork', ['butternut squash', 'pumpkin'], ['hot wings', 'pork belly sliders'], 'That doesn\'t pair so well in this area');
-  new Wine('white', 'sauvignon blanc', ['fish', 'shellfish'], ['leafy greens', 'broccoli'], ['shrimp cocktail', 'mixed green salad'], 'That doesn\'t pair so well in this area');
-  new Wine('white', 'pinot gris', ['poultry', 'pork'], ['squashes', 'root vegitables'], ['autumn salad', 'hot wings'], 'That doesn\'t pair so well in this area');
-  new Wine('white', 'viogner', ['squashes', 'root vegitables', ['corn chowder', 'chicken tenders'], 'That doesn\'t pair so well in this area']);
-  new Wine('white', 'chenin blanc', ['poultry', 'pork'], ['squashes', 'sweet potatoes'], ['autumn salad', 'mixed green salad', 'hot wings'], ['apple crumble', 'apple pie']);
-  new Wine('dessert', 'sauternes', 'That doesn\'t pair so well in this area.', 'That doesn\'t pair so well in this area.', 'bleu cheeses', ['vanilla cake', 'vanilla custard', 'vanilla ice cream']);
-  new Wine('dessert', 'port', 'That doesn\'t pair so well in this area.', 'That doesn\'t pair so well in this area.', 'That doesn\'t pair so well in this area.', ['chocolate cake', 'brownies', 'chocolate truffles', 'chocolate', 'caramel', 'toffee']);
-  new Wine('bubbles', 'sparkling rose', 'salmon', 'That doesn\'t pair so well in this area.', ['caesar salad', 'smoked salmon'], ['cheese plate', 'backed brie']);
-  new Wine('bubbles', 'prosecco', ['shell fish', 'poultry'], 'potatoes', ['french fries', 'calamari', 'fried veggie fritters'], ['cheese cake', 'fruit tart', 'cheese plate']);
-  new Wine('bubbles', 'champagne', ['shell fish', 'poultry'], 'potatoes', ['french fries', 'calamari', 'fried veggie fritters'], ['raspberry cheese cake', 'fruit tart', 'cheese plate']);
+  new Wine('red', 'Cabernet Sauvignon', ['red meat'], ['grilled', 'roasted'], ['burger sliders', 'beef ribs'], ['That doesn\'t pair so well in this area']);
+  new Wine('red', 'Pinot Noir', ['pork'], ['grilled', 'roasted', 'Mushrooms'], ['stuffed mushrooms', 'cured meats'], ['That doesn\'t pair so well in this area']);
+  new Wine('red', 'Merlot', ['red meats', 'pork'], ['That doesn\'t pair so well in this area'], ['beef ribs', 'cheese plate'], ['chocolate cake', 'chocolate truffles', 'cherry cordials']);
+  new Wine('red', 'Grenache', ['pork'], ['grilled', 'roasted'], ['pork belly sliders', 'street tacos'], ['That doesn\'t pair so well in this area']);
+  new Wine('red', 'Chianti', ['red meat'], ['tomatoes', 'italian herbs'], ['pizza', 'mozzerella sticks'], ['That doesn\'t pair so well in this area']);
+  new Wine('red', 'Bordeaux Blend', ['red meat'], ['leafy greens', 'roasted', 'grilled'], ['burger sliders', 'beef ribs'], ['That doesn\'t pair so well in this area']);
+  new Wine('white', 'Chardonnay', ['poultry'], ['corn', 'cauliflower', 'squashes'], ['corn chowder', 'chicken tenders'], ['That doesn\'t pair so well in this area']);
+  new Wine('white', 'Reisling', ['pork'], ['butternut squash', 'pumpkin'], ['hot wings', 'pork belly sliders'], ['That doesn\'t pair so well in this area']);
+  new Wine('white', 'Sauvignon Blanc', ['fish', 'shellfish'], ['leafy greens', 'broccoli'], ['shrimp cocktail', 'mixed green salad'], ['That doesn\'t pair so well in this area']);
+  new Wine('white', 'pinot gris', ['poultry', 'pork'], ['squashes', 'root vegitables'], ['autumn salad', 'hot wings'], ['That doesn\'t pair so well in this area']);
+  new Wine('white', 'Viogner', ['squashes', 'root vegitables'], ['corn chowder', 'chicken tenders'], ['That doesn\'t pair so well in this area']);
+  new Wine('white', 'Chenin Blanc', ['poultry', 'pork'], ['squashes', 'sweet potatoes'], ['autumn salad', 'mixed green salad', 'hot wings'], ['apple crumble', 'apple pie']);
+  new Wine('dessert', 'Sauternes', ['That doesn\'t pair so well in this area.'], ['That doesn\'t pair so well in this area.'], ['bleu cheeses'], ['vanilla cake', 'vanilla custard', 'vanilla ice cream']);
+  new Wine('dessert', 'Port', ['That doesn\'t pair so well in this area.'], ['That doesn\'t pair so well in this area.'], ['That doesn\'t pair so well in this area.'], ['chocolate cake', 'brownies', 'chocolate truffles', 'chocolate', 'caramel', 'toffee']);
+  new Wine('bubbles', 'Sparkling Rose', ['salmon'], ['That doesn\'t pair so well in this area.'], ['caesar salad', 'smoked salmon'], ['cheese plate', 'backed brie']);
+  new Wine('bubbles', 'Prosecco', ['shell fish', 'poultry'], ['potatoes'], ['french fries', 'calamari', 'fried veggie fritters'], ['cheese cake', 'fruit tart', 'cheese plate']);
+  new Wine('bubbles', 'Champagne', ['shell fish', 'poultry'], ['potatoes'], ['french fries', 'calamari', 'fried veggie fritters'], ['raspberry cheese cake', 'fruit tart', 'cheese plate']);
 }
 ///properties: categories, protein[], veg[], small plate[], dessert[]
 
@@ -98,35 +102,154 @@ function clickWineCategory(event) {
 
 // The call-back function for our home-page wine button listener.
 function varietalSelection(event) {
+  var userName = prompt('Enter your username.');
   var captureWineCategory = event.target.value;
   for (var i = 0; i < allWines.length; i++) {
     if (captureWineCategory === allWines[i].varietal) {
-      renderFoodOptions();
+      renderFoodOptions(i);
+
+      // allWinesChosen.push(captureWineCategory);
+      // console.log(allWines[i].varietal);
+
+      mealArray = [];
+      mealArray.push(userName);
+      mealArray.push(allWines[i].varietal);
     }
-  //turn off event listener (maybe . . . review later)
   }
+
+  // console.log(captureWineCategory);
+  // console.log(i);
 }
 
-function renderFoodOptions() {
-  // append protein, veg, sp, dessert property values as radio button form
-  //call submitSelections function.
-  //turn off listener.
+function renderFoodOptions(i) {
+  var protein = allWines[i].protein;
+  var vegetables = allWines[i].veg;
+  var smallPlates = allWines[i].smallPlate;
+  var dessert = allWines[i].dessert;
+
+  for (var j = 0; j < allWines[i].protein.length; j++) {
+    var radioLabel = document.createElement('label');
+    radioLabel.setAttribute('class', 'radioLabel'); //added radio label class
+    radioLabel.textContent = protein[j];
+    var foodChild = document.createElement('input');
+
+    foodChild.setAttribute('class', 'radioButton'); //added radio button class
+
+    foodChild.setAttribute('value', protein[j]);
+
+    foodChild.setAttribute('type', 'radio');
+    radioLabel.setAttribute('class', 'selectedFood');
+    foodChild.setAttribute('name', protein[j]);
+    radioLabel.appendChild(foodChild);
+    var sectionParent = document.getElementById('protein');
+    sectionParent.appendChild(radioLabel);
+  }
+
+  for (var k = 0; k < allWines[i].veg.length; k++) {
+    var radioLabelv = document.createElement('label');
+    radioLabelv.setAttribute('class', 'radioLabel'); //added radio label class
+    radioLabelv.textContent = vegetables[k];
+    var foodChildv = document.createElement('input');
+    foodChildv.setAttribute('class', 'radioButton'); //added radio button class
+    foodChildv.setAttribute('type', 'radio');
+    radioLabelv.setAttribute('class', 'selectedFood');
+    foodChildv.setAttribute('name', 'vegetables');
+    foodChildv.setAttribute('value', vegetables[k]);
+    radioLabelv.appendChild(foodChildv);
+    var sectionParentv = document.getElementById('vegetables');
+    sectionParentv.appendChild(radioLabelv);
+  }
+
+  for (var l = 0; l < allWines[i].smallPlate.length; l++) {
+    var radioLabelSp = document.createElement('label');
+    radioLabelSp.setAttribute('class', 'radioLabel'); //added radio label class
+    radioLabelSp.textContent = smallPlates[l];
+
+    var foodChildSp = document.createElement('input');
+    foodChildSp.setAttribute('class', 'radioButton'); //added radio button class
+    foodChildSp.setAttribute('type', 'radio');
+    radioLabelSp.setAttribute('class', 'selectedFood');
+    foodChildSp.setAttribute('name', 'smallPlates');
+    foodChildSp.setAttribute('value', smallPlates[l]);
+    radioLabelSp.appendChild(foodChildSp);
+    var sectionParentSp = document.getElementById('small-plates');
+    sectionParentSp.appendChild(radioLabelSp);
+  }
+
+  for (var m = 0; m < allWines[i].dessert.length; m++) {
+    var radioLabeld = document.createElement('label');
+    radioLabeld.setAttribute('class', 'radioLabel'); //added radio label class
+    radioLabeld.textContent = dessert[m];
+    var foodChildd = document.createElement('input');
+    foodChildd.setAttribute('class', 'radioButton'); //added radio button class
+    foodChildd.setAttribute('type', 'radio');
+    radioLabeld.setAttribute('class', 'selectedFood');
+    foodChildd.setAttribute('name', 'dessert');
+    foodChildd.setAttribute('value', dessert[m]);
+    //foodChildd.setAttribute('class', 'foodOption');
+    radioLabeld.appendChild(foodChildd);
+    var sectionParentd = document.getElementById('desserts');
+    sectionParentd.appendChild(radioLabeld);
+  }
+
+  wineSelection.removeEventListener('click', varietalSelection);
+  renderSubmitButton();
 
 }
 
 
-// foodItemForm.addEventListener('submit', submitSelections)
+function renderSubmitButton() {
+  // var foodForm = document.getElementById('food-parent');
+  submitButton.textContent = 'Submit Your Choices';
+  submitButton.setAttribute('type', 'submit');
+  foodForm.appendChild(submitButton);
+}
 
-function submitSelections() {
-  //capture all selections as an array, and run through meal plan constructor
-  //save this to local storage
-  //call the renderMealPlan function
-  //turn off listener
+// var foodForm = document.getElementsById('food-parent');
+
+function submitSelections(event) {
+  //we want the computer to take all the selections and push them into an array
+  event.preventDefault();
+  // var myRadio = document.getElementsByName('vegetables');
+
+  // console.log(event);
+  // var mealArray = [];
+  for (var i = 0; i < event.target.length; i++) {
+    if (event.target[i].checked === true) {
+      // console.log(event.target[i].value);
+      mealArray.push(event.target[i].value);
+      // console.log(mealArray);
+    }
+  }
+  // submitButton.innerHTML = ;
+  initiateStorage();
+  // renderYourWineRack();
+  turnOffEventListeners();
+  window.open('../pages/yourWineRack.html', '_self');
+
+}
+
+function initiateStorage() {
+  var mealArrayStringified = JSON.stringify(mealArray);
+  localStorage.setItem('userName', mealArrayStringified);
 }
 
 function renderMealPlan() {
-  //take the newly constructed meal plan object
-  // append to the page
+  var retrieveStorage = localStorage.getItem('userName');
+  var parsedStorage = JSON.parse(retrieveStorage);
+
+  var theadParent = document.getElementById('theadParent');
+  var trElement = document.createElement('tr');
+  for (var i = 0; i < 6; i++) {
+    var tdElement = document.createElement('td');
+    tdElement.textContent = parsedStorage[i];
+    trElement.appendChild(tdElement);
+    console.log(parsedStorage);
+
+  }
+  console.log(theadParent);
+  console.log(trElement);
+  theadParent.appendChild(trElement);
 }
 // each item in the list is a button with an event listener to trigger the next step
 // upon click, a list of items from each food category is appended to the page as a radio button
@@ -149,9 +272,29 @@ function mealPlanDelete() {
   // Push to local storage.
 }
 
+function determineHTMLPage () {
+  if(document.URL.includes('reds.html') || document.URL.includes('whites.html') || document.URL.includes('bubbles.html') || document.URL.includes('desserts.html')) {
+    wineSelection.addEventListener('click', varietalSelection);
+    foodForm.addEventListener('submit', submitSelections);
+  }
+}
+
+function turnOffEventListeners() {
+  wineSelection.removeEventListener('click', varietalSelection);
+  foodForm.removeEventListener('submit', submitSelections);
+}
+
+function runRenderMealPlan() {
+  if (document.URL.includes('yourWineRack.html')) {
+    renderMealPlan();
+  }
+
+}
+
 //append submit button to delete selected meal plans from local storage.
 //add comment text boxes, append submit button for upvotes.
 
 // Executable functions
-wineSelection.addEventListener('click', varietalSelection);
-
+instantiateWineObjects();
+determineHTMLPage();
+runRenderMealPlan();

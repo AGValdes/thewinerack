@@ -1,1 +1,153 @@
 
+fieldset {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+
+}
+
+.food-category {
+  min-height: 250px;
+  min-width: 250px;
+  /* border: 1px solid orange; */
+  background-color: #f7dcaf;
+  display: flex;
+  flex-direction: column;
+  /* position: relative; */
+  color: #251318;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 24px;
+  padding: 10px 0px 0px 10px;
+}
+
+h1 a {
+  color: white;
+  text-decoration: none;
+}
+
+#categoryTitle {
+  color: white;
+margin-top: .5em;
+  text-align: center;
+  font-family: 'Open Sans Condensed', sans-serif;
+  /* font-family: 'Pinyon Script', cursive; */
+  font-size: 4em;
+  padding-top: 5px;
+  text-shadow: black 5px 5px;
+}
+
+main {
+  /* background-image: url("../img/wineglasses.jpg"); */
+  background-size: cover;
+  /* background-color: gray; */
+  border: 1px solid black;
+  margin-top: 20px;
+  background-color: #722F37;
+  width: 960px;
+}
+
+body {
+  width: 960px;
+  margin: auto;
+  background-color:#251318;
+  
+}
+
+#wineRack {
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: white;
+  float: right;
+  text-decoration: none;
+}
+
+#redLink {
+margin-top: 20px;
+}
+
+#formSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 50px;
+
+}
+
+#food-parent {
+  /* padding-top: 15px; */
+  display: flex;
+  justify-content: space-between;
+  min-width: 600px;
+  min-height: 600px;
+  flex-direction: row;
+  /* border: 1px solid black; */
+}
+
+#foodItems1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 25px;
+}
+
+#foodItems2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 25px;
+}
+
+#redWineList{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  min-height: 600px;
+  /* border: 1px solid black; */
+  /* padding-top: 25px; */
+  /* margin-bottom: 250px; */
+}
+
+.varietal {
+  font-family: 'Open Sans Condensed', sans-serif;
+  width: 175px;
+  height: 50px;
+  font-size: 22px;
+  border-radius: 15px;
+  /* background-color: #F7E7CE; */
+  background-color: #251318; 
+  border: none;
+  color: white;
+  transition: background-color 0.5s ease;
+}
+
+.varietal:hover {
+  background-color: #f7dcaf;
+  color: #251318;
+}
+
+.varietal:focus{
+  background-color: #f7dcaf;
+  color: #251318;
+  outline: none;
+
+}
+
+.selectedFood {
+  position: relative;
+  padding-left: 20px;
+  padding-right: 15px;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.radioButton {
+  border: 25px solid black;
+  /* display: none; */
+  position: absolute;
+  left: 0px;
+
+}
+
+#submit-button {
+display: block;
+}
+
