@@ -37,6 +37,7 @@ body {
 #choiceButtons a:hover {
 background-color:rgb(37, 19, 24) ;
 }
+
 a {
   text-decoration: none;
   color: black;
@@ -51,6 +52,10 @@ margin-top: .5em;
   font-size: 4em;
   padding-top: 5px;
   text-shadow: black 5px 5px;
+}
+
+header > a {
+  color: white;
 }
 
 #wineRack {

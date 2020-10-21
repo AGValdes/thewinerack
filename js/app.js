@@ -181,6 +181,7 @@ function renderSubmitButton() {
   // var foodForm = document.getElementById('food-parent');
   submitButton.textContent = 'Submit Your Choices';
   submitButton.setAttribute('type', 'submit');
+  submitButton.setAttribute('id', 'submitbutton');
   foodForm.appendChild(submitButton);
 }
 
