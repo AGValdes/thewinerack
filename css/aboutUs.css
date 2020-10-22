@@ -59,8 +59,9 @@ p {
 }
 ul{
   list-style-type: square;
-  list-style-position: inside;
+  list-style-position: outside;
   padding: 10px;
+  margin-left: 15px;
 }
 li{
   padding: 8px;
