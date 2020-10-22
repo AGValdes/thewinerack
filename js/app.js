@@ -41,23 +41,23 @@ function Wine(category, varietal, protein = [], veg = [], smallPlate = [], desse
 }
 
 function instantiateWineObjects() {
-  new Wine('Red', 'Cabernet Sauvignon', ['Steak', 'Beef Short Ribs', 'Chuck Roast', 'Ground Beef'], ['Grilled Zucchini', 'Brussel Sprouts'], ['Burger Sliders', 'Beef Ribs'], ['Chocolate Mousse', 'Cheese and Nut Plate', 'Vanilla Pannacotta']);
-  new Wine('Red', 'Pinot Noir', ['Pork Chops', 'Pork Tenderloin', 'Pork Spare Ribs'], ['Grilled Zucchini', 'Brussel Sprouts', 'Mushrooms'], ['Stuffed Mushrooms', 'Cured Meats'], ['No pairing']);
-  new Wine('Red', 'Merlot', ['Steak', 'Beef Short Ribs', 'Chuck Roast', 'Ground Beef', 'Pork Chops', 'Pork Tenderloin', 'Pork Spare Ribs'], ['Charred Brussel Sprouts'], ['Beef Ribs', 'Cheese Plate'], ['Chocolate Cake', 'Chocolate Truffles', 'Cherry Cordials']);
-  new Wine('Red', 'Grenache', ['Pork Chops', 'Pork Tenderloin', 'Pork Spare Ribs'], ['Grilled Zucchini', 'Brussel Sprouts'], ['Pork Belly Sliders', 'Street Tacos'], ['No pairing']);
-  new Wine('Red', 'Chianti', ['Steak', 'Beef Short Ribs', 'Chuck Roast', 'Ground Beef'], ['Tomatoes', 'Italian Herbs'], ['Pizza', 'Mozzarella Sticks'], ['No pairing']);
-  new Wine('Red', 'Bordeaux Blend', ['Steak', 'Beef Short Ribs', 'Chuck Roast', 'Ground Beef'], ['Leafy Greens', 'Brussel Sprouts', 'Grilled Zucchini'], ['Burger Sliders', 'Beef Ribs'], ['No pairing']);
-  new Wine('White', 'Chardonnay', ['Chicken', 'Turkey', 'Duck'], ['Corn', 'Cauliflower', 'Squashes'], ['Corn Chowder', 'Chicken Tenders'], ['No pairing']);
-  new Wine('White', 'Riesling', ['Pork Chops', 'Pork Tenderloin', 'Pork Spare Ribs'], ['Butternut Squash', 'Pumpkin'], ['Hot Wings', 'Pork Belly Sliders'], ['No pairing']);
-  new Wine('White', 'Sauvignon Blanc', ['Fish', 'Shellfish'], ['Leafy Greens', 'Broccoli'], ['Shrimp Cocktail', 'Mixed Green Salad'], ['No pairing']);
-  new Wine('White', 'Pinot Gris', ['Chicken', 'Turkey', 'Duck', 'Pork Chops', 'Pork Tenderloin', 'Pork Spare Ribs'], ['Squashes', 'Root Vegetables'], ['Autumn Salad', 'Hot Wings'], ['No pairing']);
-  new Wine('White', 'Viognier', ['Squashes', 'Root Vegetables'], ['Corn Chowder', 'Chicken Tenders'], ['No pairing']);
-  new Wine('White', 'Chenin Blanc', ['Chicken', 'Turkey', 'Duck', 'Pork Chops', 'Pork Tenderloin', 'Pork Spare Ribs'], ['Squashes', 'Sweet Potatoes'], ['Autumn Salad', 'Mixed Green Salad', 'Hot Wings'], ['Apple Crumble', 'Apple Pie']);
-  new Wine('Dessert', 'Sauternes', ['Foie Gras'], ['No pairing'], ['Bleu Cheeses'], ['Vanilla Cake', 'Vanilla Custard', 'Vanilla Ice Cream']);
-  new Wine('Dessert', 'Port', ['Duck', 'Rabbit'], ['No pairing'], ['Stuffed Dates'], ['Chocolate Cake', 'Brownies', 'Chocolate Truffles', 'Chocolate', 'Caramel', 'Toffee']);
-  new Wine('Bubbles', 'Sparkling Rosé', ['Salmon'], ['No pairing'], ['Caesar Salad', 'Smoked Salmon'], ['Cheese Plate', 'Baked Brie']);
-  new Wine('Bubbles', 'Prosecco', ['Shellfish', 'Chicken', 'Turkey', 'Duck'], ['Potatoes'], ['French Fries', 'Calamari', 'Fried Veggie Fritters'], ['Cheese Cake', 'Fruit Tart', 'Cheese Plate']);
-  new Wine('Bubbles', 'Champagne', ['Shellfish', 'Chicken', 'Turkey', 'Duck'], ['Potatoes'], ['French Fries', 'Calamari', 'Fried Veggie Fritters'], ['Raspberry Cheese Cake', 'Fruit Tart', 'Cheese Plate']);
+  new Wine('Red', 'Cabernet Sauvignon', ['Steak', 'Beef Short Ribs', 'Chuck Roast', 'Ground Beef', 'No, Thank You'], ['Grilled Zucchini', 'Brussel Sprouts', 'No, Thank You'], ['Burger Sliders', 'Beef Ribs', 'No, Thank You'], ['Chocolate Mousse', 'Cheese and Nut Plate', 'Vanilla Pannacotta', 'No, Thank You']);
+  new Wine('Red', 'Pinot Noir', ['Pork Chops', 'Pork Tenderloin', 'Pork Spare Ribs', 'No, Thank You'], ['Grilled Zucchini', 'Brussel Sprouts', 'Mushrooms', 'No, Thank You'], ['Stuffed Mushrooms', 'Cured Meats', 'No, Thank You'], ['No pairing']);
+  new Wine('Red', 'Merlot', ['Steak', 'Beef Short Ribs', 'Chuck Roast', 'Ground Beef', 'Pork Chops', 'Pork Tenderloin', 'Pork Spare Ribs', 'No, Thank You'], ['Charred Brussel Sprouts', 'No, Thank You'], ['Beef Ribs', 'Cheese Plate', 'No, Thank You'], ['Chocolate Cake', 'Chocolate Truffles', 'Cherry Cordials', 'No, Thank You']);
+  new Wine('Red', 'Grenache', ['Pork Chops', 'Pork Tenderloin', 'Pork Spare Ribs', 'No, Thank You'], ['Grilled Zucchini', 'Brussel Sprouts', 'No, Thank You'], ['Pork Belly Sliders', 'Street Tacos', 'No, Thank You'], ['No pairing']);
+  new Wine('Red', 'Chianti', ['Steak', 'Beef Short Ribs', 'Chuck Roast', 'Ground Beef', 'No, Thank You'], ['Tomatoes', 'Italian Herbs', 'No, Thank You'], ['Pizza', 'Mozzarella Sticks', 'No, Thank You'], ['No pairing']);
+  new Wine('Red', 'Bordeaux Blend', ['Steak', 'Beef Short Ribs', 'Chuck Roast', 'Ground Beef', 'No, Thank You'], ['Leafy Greens', 'Brussel Sprouts', 'Grilled Zucchini', 'No, Thank You'], ['Burger Sliders', 'Beef Ribs', 'No, Thank You'], ['No pairing']);
+  new Wine('White', 'Chardonnay', ['Chicken', 'Turkey', 'Duck', 'No, Thank You'], ['Corn', 'Cauliflower', 'Squashes', 'No, Thank You'], ['Corn Chowder', 'Chicken Tenders', 'No, Thank You'], ['No pairing']);
+  new Wine('White', 'Riesling', ['Pork Chops', 'Pork Tenderloin', 'Pork Spare Ribs', 'No, Thank You'], ['Butternut Squash', 'Pumpkin', 'No, Thank You'], ['Hot Wings', 'Pork Belly Sliders', 'No, Thank You'], ['No pairing']);
+  new Wine('White', 'Sauvignon Blanc', ['Fish', 'Shellfish', 'No, Thank You'], ['Leafy Greens', 'Broccoli', 'No, Thank You'], ['Shrimp Cocktail', 'Mixed Green Salad', 'No, Thank You'], ['No pairing']);
+  new Wine('White', 'Pinot Gris', ['Chicken', 'Turkey', 'Duck', 'Pork Chops', 'Pork Tenderloin', 'Pork Spare Ribs'], ['Squashes', 'Root Vegetables', 'No, Thank You'], ['Autumn Salad', 'Hot Wings', 'No, Thank You'], ['No pairing']);
+  new Wine('White', 'Viognier', ['Squashes', 'Root Vegetables', 'No, Thank You'], ['Corn Chowder', 'Chicken Tenders', 'No, Thank You'], ['No pairing']);
+  new Wine('White', 'Chenin Blanc', ['Chicken', 'Turkey', 'Duck', 'Pork Chops', 'Pork Tenderloin', 'Pork Spare Ribs', 'No, Thank You'], ['Squashes', 'Sweet Potatoes', 'No, Thank You'], ['Autumn Salad', 'Mixed Green Salad', 'Hot Wings', 'No, Thank You'], ['Apple Crumble', 'Apple Pie', 'No, Thank You']);
+  new Wine('Dessert', 'Sauternes', ['Foie Gras', 'No, Thank You'], ['No pairing'], ['Bleu Cheeses', 'No, Thank You'], ['Vanilla Cake', 'Vanilla Custard', 'Vanilla Ice Cream', 'No, Thank You']);
+  new Wine('Dessert', 'Port', ['Duck', 'Rabbit', 'No, Thank You'], ['No pairing'], ['Stuffed Dates', 'No, Thank You'], ['Chocolate Cake', 'Brownies', 'Chocolate Truffles', 'Chocolate', 'Caramel', 'Toffee', 'No, Thank You']);
+  new Wine('Bubbles', 'Sparkling Rosé', ['Salmon', 'No, Thank You'], ['No pairing', 'No, Thank You'], ['Caesar Salad', 'Smoked Salmon', 'No, Thank You'], ['Cheese Plate', 'Baked Brie', 'No, Thank You']);
+  new Wine('Bubbles', 'Prosecco', ['Shellfish', 'Chicken', 'Turkey', 'Duck', 'No, Thank You'], ['Potatoes', 'No, Thank You'], ['French Fries', 'Calamari', 'Fried Veggie Fritters', 'No, Thank You'], ['Cheese Cake', 'Fruit Tart', 'Cheese Plate', 'No, Thank You']);
+  new Wine('Bubbles', 'Champagne', ['Shellfish', 'Chicken', 'Turkey', 'Duck', 'No, Thank You'], ['Potatoes', 'No, Thank You'], ['French Fries', 'Calamari', 'Fried Veggie Fritters', 'No, Thank You'], ['Raspberry Cheese Cake', 'Fruit Tart', 'Cheese Plate', 'No, Thank You']);
 }
 ///properties: categories, protein[], veg[], small plate[], dessert[]
 
