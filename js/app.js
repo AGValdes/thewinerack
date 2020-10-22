@@ -56,8 +56,8 @@ function instantiateWineObjects() {
   new Wine('dessert', 'Sauternes', ['No pairing'], ['No pairing'], ['bleu cheeses'], ['vanilla cake', 'vanilla custard', 'vanilla ice cream']);
   new Wine('dessert', 'Port', ['No pairing'], ['No pairing'], ['No pairing'], ['chocolate cake', 'brownies', 'chocolate truffles', 'chocolate', 'caramel', 'toffee']);
   new Wine('bubbles', 'Sparkling Rosé', ['salmon'], ['No pairing'], ['caesar salad', 'smoked salmon'], ['cheese plate', 'baked brie']);
-  new Wine('bubbles', 'Prosecco', ['shell fish', 'poultry'], ['potatoes'], ['french fries', 'calamari', 'fried veggie fritters'], ['cheese cake', 'fruit tart', 'cheese plate']);
-  new Wine('bubbles', 'Champagne', ['shell fish', 'poultry'], ['potatoes'], ['french fries', 'calamari', 'fried veggie fritters'], ['raspberry cheese cake', 'fruit tart', 'cheese plate']);
+  new Wine('bubbles', 'Prosecco', ['shellfish', 'poultry'], ['potatoes'], ['french fries', 'calamari', 'fried veggie fritters'], ['cheese cake', 'fruit tart', 'cheese plate']);
+  new Wine('bubbles', 'Champagne', ['shellfish', 'poultry'], ['potatoes'], ['french fries', 'calamari', 'fried veggie fritters'], ['raspberry cheese cake', 'fruit tart', 'cheese plate']);
 }
 ///properties: categories, protein[], veg[], small plate[], dessert[]
 

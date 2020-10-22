@@ -11,8 +11,8 @@ body {
   width: 960px;
   margin: auto;
   background-color:rgb(37, 19, 24);
-  
 }
+
 #choiceButtons {
   width: 50%;
   justify-content: center; 
@@ -20,8 +20,8 @@ body {
   flex-direction: row;
   height: 200px;
   align-items: center;
- 
 }
+
 #choiceButtons a {
   color:white;
   padding-top: 10px;
@@ -46,7 +46,7 @@ a {
 
 h1 {
   color: white;
-margin-top: .5em;
+  margin-top: .5em;
   text-align: center;
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 4em;
