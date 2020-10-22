@@ -113,12 +113,12 @@ function renderFoodOptions(i) {
     var foodChild = document.createElement('input');
 
     foodChild.setAttribute('class', 'radioButton'); //added radio button class
-
+    foodChild.setAttribute('required', 'true'); //requires radio selection
     foodChild.setAttribute('value', protein[j]);
 
     foodChild.setAttribute('type', 'radio');
     radioLabel.setAttribute('class', 'selectedFood');
-    foodChild.setAttribute('name', protein[j]);
+    foodChild.setAttribute('name', 'protein');
     radioLabel.appendChild(foodChild);
     var sectionParent = document.getElementById('protein');
     sectionParent.appendChild(radioLabel);
@@ -130,6 +130,7 @@ function renderFoodOptions(i) {
     radioLabelv.textContent = vegetables[k];
     var foodChildv = document.createElement('input');
     foodChildv.setAttribute('class', 'radioButton'); //added radio button class
+    foodChildv.setAttribute('required', 'true'); //requires radio selection
     foodChildv.setAttribute('type', 'radio');
     radioLabelv.setAttribute('class', 'selectedFood');
     foodChildv.setAttribute('name', 'vegetables');
@@ -143,9 +144,10 @@ function renderFoodOptions(i) {
     var radioLabelSp = document.createElement('label');
     radioLabelSp.setAttribute('class', 'radioLabel'); //added radio label class
     radioLabelSp.textContent = smallPlates[l];
-
+    
     var foodChildSp = document.createElement('input');
     foodChildSp.setAttribute('class', 'radioButton'); //added radio button class
+    foodChildSp.setAttribute('required', 'true'); //requires radio selection
     foodChildSp.setAttribute('type', 'radio');
     radioLabelSp.setAttribute('class', 'selectedFood');
     foodChildSp.setAttribute('name', 'smallPlates');
@@ -161,6 +163,7 @@ function renderFoodOptions(i) {
     radioLabeld.textContent = dessert[m];
     var foodChildd = document.createElement('input');
     foodChildd.setAttribute('class', 'radioButton'); //added radio button class
+    foodChildd.setAttribute('required', 'true'); //requires radio selection
     foodChildd.setAttribute('type', 'radio');
     radioLabeld.setAttribute('class', 'selectedFood');
     foodChildd.setAttribute('name', 'dessert');
