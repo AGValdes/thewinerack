@@ -4,6 +4,8 @@ main {
   height: 625px;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+ 
  
 }
 
@@ -62,4 +64,27 @@ table td{
   border: white 1px solid;
   padding: 8px;
   font-size: 18px;
+}
+
+#new-wine-section{
+  color: white;
+  padding-bottom: 25px;
+}
+
+h2{
+  text-align: center;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 1.5em;
+  padding-bottom: 15px;
+  padding-top: 25px;
+}
+
+#new-wine{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+label{
+  margin: 5px;
 }

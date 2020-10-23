@@ -208,7 +208,7 @@ function runRenderMealPlan() { // This function makes sure that the user is on t
   }
 }
 
-function newWineCapture(event) {
+function newWineCapture(event) { // This function captures a user's pairing added on the Your Wine Rack page
   event.preventDefault();
   var newVarietal = event.target.wineVarietal.value;
   var newProtein = event.target.wineProtein.value;
@@ -217,24 +217,22 @@ function newWineCapture(event) {
   var newDessert = event.target.wineDessert.value;
   updateWineObjects(newVarietal, newProtein, newVegetable, newSmallPlate, newDessert);
 
-  newPairingTableRow(newVarietal, newProtein, newVegetable, newSmallPlate, newDessert);
+  mealsFromStorage(newVarietal, newProtein, newVegetable, newSmallPlate, newDessert);
 }
 
-function newPairingTableRow(newVarietal, newProtein, newVegetable, newSmallPlate, newDessert) {
-  var newVarietalArray = [];
-  newVarietalArray.push(newVarietal, newProtein, newVegetable, newSmallPlate, newDessert);
+function mealsFromStorage (newVarietal, newProtein, newVegetable, newSmallPlate, newDessert) { // This function retrieves user meal storage, updates it and sends back to storage
+  var retrievedMealPlans = JSON.parse(localStorage.getItem('allUserMeals'));
+  var newWine= [];
+  newWine.push(newVarietal, newProtein, newVegetable, newSmallPlate, newDessert);
+  retrievedMealPlans.push(newWine);
 
-  var theadParent = document.getElementById('theadParent');
-  var trElement = document.createElement('tr');
-  for (var i = 0; i < newVarietalArray.length; i++) {
-    var tdElement = document.createElement('td');
-    tdElement.textContent = newVarietalArray[i];
-    trElement.appendChild(tdElement);
-  }
-  theadParent.appendChild(trElement);
+  localStorage.setItem('allUserMeals', JSON.stringify(retrievedMealPlans));
+
+  window.open('yourWineRack.html', '_self');
+
 }
 
-function updateWineObjects(newVarietal, newProtein, newVegetable, newSmallPlate, newDessert) {
+function updateWineObjects(newVarietal, newProtein, newVegetable, newSmallPlate, newDessert) { // This function pulls the wine objects from storage, updates them with additional user pairings and sends them back to storage
   var retrieveAllWines = JSON.parse(localStorage.getItem('allWinesKey'));
 
   for (var i = 0; i < retrieveAllWines.length; i++) {
@@ -250,7 +248,7 @@ function updateWineObjects(newVarietal, newProtein, newVegetable, newSmallPlate,
   localStorage.setItem('allWinesKey', retrievedAllWinesStringified);
 }
 
-function checkWineStorage() {
+function checkWineStorage() { // This function checks local storage for wine objects, instantiates if not, and re-instantiates if there is wine objects in storage
   if (!localStorage.allWinesKey) {
     instantiateWineObjects();
   } else {
@@ -269,13 +267,6 @@ function checkWineStorage() {
     }
   }
 }
-
-function mealPlanDelete() { // Stretch goal.
-  // Add an event listener for the radio or delete button.
-  // Delete or update, as required.
-  // Push to local storage.
-}
-
 
 // Executable functions
 determineHTMLPage();
