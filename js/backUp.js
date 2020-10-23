@@ -228,6 +228,7 @@ function mergeStorage(newVarietal, newProtein, newVegetable, newSmallPlate, newD
   var stringifiedExtantMealStorage = JSON.stringify(extantMealStorage);
   localStorage.setItem('allUserMeals', stringifiedExtantMealStorage);
   window.open('yourWineRack.html', '_self');
+
 }
 
 function updateWineObjects(newVarietal, newProtein, newVegetable, newSmallPlate, newDessert) {

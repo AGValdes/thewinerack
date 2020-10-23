@@ -1,0 +1,552 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset0 Menlo-Italic;\f2\fnil\fcharset0 Menlo-Bold;
+}
+{\colortbl;\red255\green255\blue255;\red37\green146\blue134;\red252\green244\blue220;\red38\green38\blue38;
+\red129\green144\blue144;\red10\green41\blue51;\red33\green118\blue199;\red115\green138\blue4;\red198\green28\blue111;
+\red165\green119\blue5;}
+{\*\expandedcolortbl;;\cssrgb\c16471\c63137\c59608;\cssrgb\c99216\c96471\c89020;\cssrgb\c20000\c20000\c20000;
+\cssrgb\c57647\c63137\c63137;\cssrgb\c2745\c21176\c25882;\cssrgb\c14902\c54510\c82353;\cssrgb\c52157\c60000\c0;\cssrgb\c82745\c21176\c50980;
+\cssrgb\c70980\c53725\c0;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f0\fs24 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 'use strict'\cf4 \strokec4 ;\cb1 \
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f1\i \cf5 \cb3 \strokec5 // Global variables
+\f0\i0 \cf4 \cb1 \strokec4 \
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f2\b \cf6 \cb3 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 allWines\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  [];\cb1 \
+
+\f2\b \cf6 \cb3 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 allMealPlans\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  [];\cb1 \
+
+\f2\b \cf6 \cb3 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 mealArray\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  [];\cb1 \
+
+\f2\b \cf6 \cb3 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 wineSelection\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 document\cf4 \strokec4 .\cf7 \strokec7 getElementById\cf4 \strokec4 (\cf2 \strokec2 'redWineList'\cf4 \strokec4 );\cb1 \
+
+\f2\b \cf6 \cb3 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 submitButton\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 document\cf4 \strokec4 .\cf7 \strokec7 createElement\cf4 \strokec4 (\cf2 \strokec2 'button'\cf4 \strokec4 );\cb1 \
+
+\f2\b \cf6 \cb3 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 foodForm\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 document\cf4 \strokec4 .\cf7 \strokec7 getElementById\cf4 \strokec4 (\cf2 \strokec2 'food-parent'\cf4 \strokec4 );\cb1 \
+
+\f2\b \cf6 \cb3 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 submitButtonTwoElectricBoogaloo\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 document\cf4 \strokec4 .\cf7 \strokec7 getElementById\cf4 \strokec4 (\cf2 \strokec2 'new-wine'\cf4 \strokec4 );\cb1 \
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f1\i \cf5 \cb3 \strokec5 // Functions
+\f0\i0 \cf4 \cb1 \strokec4 \
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f2\b \cf6 \cb3 \strokec6 function
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 Wine\cf4 \strokec4 (category, varietal, protein \cf8 \strokec8 =\cf4 \strokec4  [], veg \cf8 \strokec8 =\cf4 \strokec4  [], smallPlate \cf8 \strokec8 =\cf4 \strokec4  [], dessert \cf8 \strokec8 =\cf4 \strokec4  []) \{ 
+\f1\i \cf5 \strokec5 // This constructor function makes wine object instances.
+\f0\i0 \cf4 \cb1 \strokec4 \
+\
+\pard\pardeftab720\sl360\partightenfactor0
+\cf4 \cb3   \cf7 \strokec7 this\cf4 \strokec4 .\cf7 \strokec7 category\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 category\cf4 \strokec4 ;\cb1 \
+\cb3   \cf7 \strokec7 this\cf4 \strokec4 .\cf7 \strokec7 varietal\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 varietal\cf4 \strokec4 ;\cb1 \
+\cb3   \cf7 \strokec7 this\cf4 \strokec4 .\cf7 \strokec7 protein\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 protein\cf4 \strokec4 ;\cb1 \
+\cb3   \cf7 \strokec7 this\cf4 \strokec4 .\cf7 \strokec7 veg\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 veg\cf4 \strokec4 ;\cb1 \
+\cb3   \cf7 \strokec7 this\cf4 \strokec4 .\cf7 \strokec7 smallPlate\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 smallPlate\cf4 \strokec4 ;\cb1 \
+\cb3   \cf7 \strokec7 this\cf4 \strokec4 .\cf7 \strokec7 dessert\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 dessert\cf4 \strokec4 ;\cb1 \
+\
+\cb3   \cf7 \strokec7 allWines\cf4 \strokec4 .\cf7 \strokec7 push\cf4 \strokec4 (\cf7 \strokec7 this\cf4 \strokec4 );\cb1 \
+\cb3 \}\cb1 \
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f2\b \cf6 \cb3 \strokec6 function
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 instantiateWineObjects\cf4 \strokec4 () \{ 
+\f1\i \cf5 \strokec5 // This function defines the hard-coded wine pairings.
+\f0\i0 \cf4 \cb1 \strokec4 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf4 \cb3   \cf8 \strokec8 new\cf4 \strokec4  \cf7 \strokec7 Wine\cf4 \strokec4 (\cf2 \strokec2 'Red'\cf4 \strokec4 , \cf2 \strokec2 'Cabernet Sauvignon'\cf4 \strokec4 , [\cf2 \strokec2 'Steak'\cf4 \strokec4 , \cf2 \strokec2 'Beef Short Ribs'\cf4 \strokec4 , \cf2 \strokec2 'Chuck Roast'\cf4 \strokec4 , \cf2 \strokec2 'Ground Beef'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'Grilled Zucchini'\cf4 \strokec4 , \cf2 \strokec2 'Brussel Sprouts'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'Burger Sliders'\cf4 \strokec4 , \cf2 \strokec2 'Beef Ribs'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'Chocolate Mousse'\cf4 \strokec4 , \cf2 \strokec2 'Cheese and Nut Plate'\cf4 \strokec4 , \cf2 \strokec2 'Vanilla Pannacotta'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ]);\cb1 \
+\cb3   \cf8 \strokec8 new\cf4 \strokec4  \cf7 \strokec7 Wine\cf4 \strokec4 (\cf2 \strokec2 'Red'\cf4 \strokec4 , \cf2 \strokec2 'Pinot Noir'\cf4 \strokec4 , [\cf2 \strokec2 'Pork Chops'\cf4 \strokec4 , \cf2 \strokec2 'Pork Tenderloin'\cf4 \strokec4 , \cf2 \strokec2 'Pork Spare Ribs'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'Grilled Zucchini'\cf4 \strokec4 , \cf2 \strokec2 'Brussel Sprouts'\cf4 \strokec4 , \cf2 \strokec2 'Mushrooms'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'Stuffed Mushrooms'\cf4 \strokec4 , \cf2 \strokec2 'Cured Meats'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'No Pairing'\cf4 \strokec4 ]);\cb1 \
+\cb3   \cf8 \strokec8 new\cf4 \strokec4  \cf7 \strokec7 Wine\cf4 \strokec4 (\cf2 \strokec2 'Red'\cf4 \strokec4 , \cf2 \strokec2 'Merlot'\cf4 \strokec4 , [\cf2 \strokec2 'Steak'\cf4 \strokec4 , \cf2 \strokec2 'Beef Short Ribs'\cf4 \strokec4 , \cf2 \strokec2 'Chuck Roast'\cf4 \strokec4 , \cf2 \strokec2 'Ground Beef'\cf4 \strokec4 , \cf2 \strokec2 'Pork Chops'\cf4 \strokec4 , \cf2 \strokec2 'Pork Tenderloin'\cf4 \strokec4 , \cf2 \strokec2 'Pork Spare Ribs'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'Charred Brussel Sprouts'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'Beef Ribs'\cf4 \strokec4 , \cf2 \strokec2 'Cheese Plate'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'Chocolate Cake'\cf4 \strokec4 , \cf2 \strokec2 'Chocolate Truffles'\cf4 \strokec4 , \cf2 \strokec2 'Cherry Cordials'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ]);\cb1 \
+\cb3   \cf8 \strokec8 new\cf4 \strokec4  \cf7 \strokec7 Wine\cf4 \strokec4 (\cf2 \strokec2 'Red'\cf4 \strokec4 , \cf2 \strokec2 'Grenache'\cf4 \strokec4 , [\cf2 \strokec2 'Pork Chops'\cf4 \strokec4 , \cf2 \strokec2 'Pork Tenderloin'\cf4 \strokec4 , \cf2 \strokec2 'Pork Spare Ribs'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'Grilled Zucchini'\cf4 \strokec4 , \cf2 \strokec2 'Brussel Sprouts'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'Pork Belly Sliders'\cf4 \strokec4 , \cf2 \strokec2 'Street Tacos'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'No Pairing'\cf4 \strokec4 ]);\cb1 \
+\cb3   \cf8 \strokec8 new\cf4 \strokec4  \cf7 \strokec7 Wine\cf4 \strokec4 (\cf2 \strokec2 'Red'\cf4 \strokec4 , \cf2 \strokec2 'Chianti'\cf4 \strokec4 , [\cf2 \strokec2 'Steak'\cf4 \strokec4 , \cf2 \strokec2 'Beef Short Ribs'\cf4 \strokec4 , \cf2 \strokec2 'Chuck Roast'\cf4 \strokec4 , \cf2 \strokec2 'Ground Beef'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'Tomatoes'\cf4 \strokec4 , \cf2 \strokec2 'Italian Herbs'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'Pizza'\cf4 \strokec4 , \cf2 \strokec2 'Mozzarella Sticks'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'No Pairing'\cf4 \strokec4 ]);\cb1 \
+\cb3   \cf8 \strokec8 new\cf4 \strokec4  \cf7 \strokec7 Wine\cf4 \strokec4 (\cf2 \strokec2 'Red'\cf4 \strokec4 , \cf2 \strokec2 'Bordeaux Blend'\cf4 \strokec4 , [\cf2 \strokec2 'Steak'\cf4 \strokec4 , \cf2 \strokec2 'Beef Short Ribs'\cf4 \strokec4 , \cf2 \strokec2 'Chuck Roast'\cf4 \strokec4 , \cf2 \strokec2 'Ground Beef'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'Leafy Greens'\cf4 \strokec4 , \cf2 \strokec2 'Brussel Sprouts'\cf4 \strokec4 , \cf2 \strokec2 'Grilled Zucchini'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'Burger Sliders'\cf4 \strokec4 , \cf2 \strokec2 'Beef Ribs'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'No Pairing'\cf4 \strokec4 ]);\cb1 \
+\cb3   \cf8 \strokec8 new\cf4 \strokec4  \cf7 \strokec7 Wine\cf4 \strokec4 (\cf2 \strokec2 'White'\cf4 \strokec4 , \cf2 \strokec2 'Chardonnay'\cf4 \strokec4 , [\cf2 \strokec2 'Chicken'\cf4 \strokec4 , \cf2 \strokec2 'Turkey'\cf4 \strokec4 , \cf2 \strokec2 'Duck'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'Corn'\cf4 \strokec4 , \cf2 \strokec2 'Cauliflower'\cf4 \strokec4 , \cf2 \strokec2 'Squashes'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'Corn Chowder'\cf4 \strokec4 , \cf2 \strokec2 'Chicken Tenders'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'No Pairing'\cf4 \strokec4 ]);\cb1 \
+\cb3   \cf8 \strokec8 new\cf4 \strokec4  \cf7 \strokec7 Wine\cf4 \strokec4 (\cf2 \strokec2 'White'\cf4 \strokec4 , \cf2 \strokec2 'Riesling'\cf4 \strokec4 , [\cf2 \strokec2 'Pork Chops'\cf4 \strokec4 , \cf2 \strokec2 'Pork Tenderloin'\cf4 \strokec4 , \cf2 \strokec2 'Pork Spare Ribs'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'Butternut Squash'\cf4 \strokec4 , \cf2 \strokec2 'Pumpkin'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'Hot Wings'\cf4 \strokec4 , \cf2 \strokec2 'Pork Belly Sliders'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'No Pairing'\cf4 \strokec4 ]);\cb1 \
+\cb3   \cf8 \strokec8 new\cf4 \strokec4  \cf7 \strokec7 Wine\cf4 \strokec4 (\cf2 \strokec2 'White'\cf4 \strokec4 , \cf2 \strokec2 'Sauvignon Blanc'\cf4 \strokec4 , [\cf2 \strokec2 'Fish'\cf4 \strokec4 , \cf2 \strokec2 'Shellfish'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'Leafy Greens'\cf4 \strokec4 , \cf2 \strokec2 'Broccoli'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'Shrimp Cocktail'\cf4 \strokec4 , \cf2 \strokec2 'Mixed Green Salad'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'No Pairing'\cf4 \strokec4 ]);\cb1 \
+\cb3   \cf8 \strokec8 new\cf4 \strokec4  \cf7 \strokec7 Wine\cf4 \strokec4 (\cf2 \strokec2 'White'\cf4 \strokec4 , \cf2 \strokec2 'Pinot Gris'\cf4 \strokec4 , [\cf2 \strokec2 'Chicken'\cf4 \strokec4 , \cf2 \strokec2 'Turkey'\cf4 \strokec4 , \cf2 \strokec2 'Duck'\cf4 \strokec4 , \cf2 \strokec2 'Pork Chops'\cf4 \strokec4 , \cf2 \strokec2 'Pork Tenderloin'\cf4 \strokec4 , \cf2 \strokec2 'Pork Spare Ribs'\cf4 \strokec4 ], [\cf2 \strokec2 'Squashes'\cf4 \strokec4 , \cf2 \strokec2 'Root Vegetables'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'Autumn Salad'\cf4 \strokec4 , \cf2 \strokec2 'Hot Wings'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'No Pairing'\cf4 \strokec4 ]);\cb1 \
+\cb3   \cf8 \strokec8 new\cf4 \strokec4  \cf7 \strokec7 Wine\cf4 \strokec4 (\cf2 \strokec2 'White'\cf4 \strokec4 , \cf2 \strokec2 'Viognier'\cf4 \strokec4 , [\cf2 \strokec2 'Squashes'\cf4 \strokec4 , \cf2 \strokec2 'Root Vegetables'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'Corn Chowder'\cf4 \strokec4 , \cf2 \strokec2 'Chicken Tenders'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'No Pairing'\cf4 \strokec4 ]);\cb1 \
+\cb3   \cf8 \strokec8 new\cf4 \strokec4  \cf7 \strokec7 Wine\cf4 \strokec4 (\cf2 \strokec2 'White'\cf4 \strokec4 , \cf2 \strokec2 'Chenin Blanc'\cf4 \strokec4 , [\cf2 \strokec2 'Chicken'\cf4 \strokec4 , \cf2 \strokec2 'Turkey'\cf4 \strokec4 , \cf2 \strokec2 'Duck'\cf4 \strokec4 , \cf2 \strokec2 'Pork Chops'\cf4 \strokec4 , \cf2 \strokec2 'Pork Tenderloin'\cf4 \strokec4 , \cf2 \strokec2 'Pork Spare Ribs'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'Squashes'\cf4 \strokec4 , \cf2 \strokec2 'Sweet Potatoes'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'Autumn Salad'\cf4 \strokec4 , \cf2 \strokec2 'Mixed Green Salad'\cf4 \strokec4 , \cf2 \strokec2 'Hot Wings'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'Apple Crumble'\cf4 \strokec4 , \cf2 \strokec2 'Apple Pie'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ]);\cb1 \
+\cb3   \cf8 \strokec8 new\cf4 \strokec4  \cf7 \strokec7 Wine\cf4 \strokec4 (\cf2 \strokec2 'Dessert'\cf4 \strokec4 , \cf2 \strokec2 'Sauternes'\cf4 \strokec4 , [\cf2 \strokec2 'Foie Gras'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'No Pairing'\cf4 \strokec4 ], [\cf2 \strokec2 'Bleu Cheeses'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'Vanilla Cake'\cf4 \strokec4 , \cf2 \strokec2 'Vanilla Custard'\cf4 \strokec4 , \cf2 \strokec2 'Vanilla Ice Cream'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ]);\cb1 \
+\cb3   \cf8 \strokec8 new\cf4 \strokec4  \cf7 \strokec7 Wine\cf4 \strokec4 (\cf2 \strokec2 'Dessert'\cf4 \strokec4 , \cf2 \strokec2 'Port'\cf4 \strokec4 , [\cf2 \strokec2 'Duck'\cf4 \strokec4 , \cf2 \strokec2 'Rabbit'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'No Pairing'\cf4 \strokec4 ], [\cf2 \strokec2 'Stuffed Dates'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'Chocolate Cake'\cf4 \strokec4 , \cf2 \strokec2 'Brownies'\cf4 \strokec4 , \cf2 \strokec2 'Chocolate Truffles'\cf4 \strokec4 , \cf2 \strokec2 'Chocolate'\cf4 \strokec4 , \cf2 \strokec2 'Caramel'\cf4 \strokec4 , \cf2 \strokec2 'Toffee'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ]);\cb1 \
+\cb3   \cf8 \strokec8 new\cf4 \strokec4  \cf7 \strokec7 Wine\cf4 \strokec4 (\cf2 \strokec2 'Bubbles'\cf4 \strokec4 , \cf2 \strokec2 'Sparkling Ros\'e9'\cf4 \strokec4 , [\cf2 \strokec2 'Salmon'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'No Pairing'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'Caesar Salad'\cf4 \strokec4 , \cf2 \strokec2 'Smoked Salmon'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'Cheese Plate'\cf4 \strokec4 , \cf2 \strokec2 'Baked Brie'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ]);\cb1 \
+\cb3   \cf8 \strokec8 new\cf4 \strokec4  \cf7 \strokec7 Wine\cf4 \strokec4 (\cf2 \strokec2 'Bubbles'\cf4 \strokec4 , \cf2 \strokec2 'Prosecco'\cf4 \strokec4 , [\cf2 \strokec2 'Shellfish'\cf4 \strokec4 , \cf2 \strokec2 'Chicken'\cf4 \strokec4 , \cf2 \strokec2 'Turkey'\cf4 \strokec4 , \cf2 \strokec2 'Duck'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'Potatoes'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'French Fries'\cf4 \strokec4 , \cf2 \strokec2 'Calamari'\cf4 \strokec4 , \cf2 \strokec2 'Fried Veggie Fritters'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'Cheese Cake'\cf4 \strokec4 , \cf2 \strokec2 'Fruit Tart'\cf4 \strokec4 , \cf2 \strokec2 'Cheese Plate'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ]);\cb1 \
+\cb3   \cf8 \strokec8 new\cf4 \strokec4  \cf7 \strokec7 Wine\cf4 \strokec4 (\cf2 \strokec2 'Bubbles'\cf4 \strokec4 , \cf2 \strokec2 'Champagne'\cf4 \strokec4 , [\cf2 \strokec2 'Shellfish'\cf4 \strokec4 , \cf2 \strokec2 'Chicken'\cf4 \strokec4 , \cf2 \strokec2 'Turkey'\cf4 \strokec4 , \cf2 \strokec2 'Duck'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'Potatoes'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'French Fries'\cf4 \strokec4 , \cf2 \strokec2 'Calamari'\cf4 \strokec4 , \cf2 \strokec2 'Fried Veggie Fritters'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ], [\cf2 \strokec2 'Raspberry Cheese Cake'\cf4 \strokec4 , \cf2 \strokec2 'Fruit Tart'\cf4 \strokec4 , \cf2 \strokec2 'Cheese Plate'\cf4 \strokec4 , \cf2 \strokec2 'No, Thank You'\cf4 \strokec4 ]);\cb1 \
+\
+\cb3   
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 allWinesAsAString\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 JSON\cf4 \strokec4 .\cf7 \strokec7 stringify\cf4 \strokec4 (\cf7 \strokec7 allWines\cf4 \strokec4 );\cb1 \
+\cb3   \cf7 \strokec7 localStorage\cf4 \strokec4 .\cf7 \strokec7 setItem\cf4 \strokec4 (\cf2 \strokec2 'allWinesKey'\cf4 \strokec4 , \cf7 \strokec7 allWinesAsAString\cf4 \strokec4 );\cb1 \
+\cb3 \}\cb1 \
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f2\b \cf6 \cb3 \strokec6 function
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 varietalSelection\cf4 \strokec4 (event) \{ 
+\f1\i \cf5 \strokec5 // The call-back function for our home-page wine button listener.
+\f0\i0 \cf4 \cb1 \strokec4 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf4 \cb3   
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 captureWineCategory\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 event\cf4 \strokec4 .\cf7 \strokec7 target\cf4 \strokec4 .\cf7 \strokec7 value\cf4 \strokec4 ;\cb1 \
+\cb3   \cf8 \strokec8 for\cf4 \strokec4  (
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 i\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf9 \strokec9 0\cf4 \strokec4 ; \cf7 \strokec7 i\cf4 \strokec4  \cf8 \strokec8 <\cf4 \strokec4  \cf7 \strokec7 allWines\cf4 \strokec4 .\cf7 \strokec7 length\cf4 \strokec4 ; \cf7 \strokec7 i\cf8 \strokec8 ++\cf4 \strokec4 ) \{\cb1 \
+\cb3     \cf8 \strokec8 if\cf4 \strokec4  (\cf7 \strokec7 captureWineCategory\cf4 \strokec4  \cf8 \strokec8 ===\cf4 \strokec4  \cf7 \strokec7 allWines\cf4 \strokec4 [\cf7 \strokec7 i\cf4 \strokec4 ].\cf7 \strokec7 varietal\cf4 \strokec4 ) \{\cb1 \
+\cb3       \cf7 \strokec7 renderFoodOptions\cf4 \strokec4 (\cf7 \strokec7 i\cf4 \strokec4 );\cb1 \
+\
+\cb3       \cf7 \strokec7 mealArray\cf4 \strokec4 .\cf7 \strokec7 push\cf4 \strokec4 (\cf7 \strokec7 allWines\cf4 \strokec4 [\cf7 \strokec7 i\cf4 \strokec4 ].\cf7 \strokec7 varietal\cf4 \strokec4 );\cb1 \
+\cb3     \}\cb1 \
+\cb3   \}\cb1 \
+\cb3 \}\cb1 \
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f2\b \cf6 \cb3 \strokec6 function
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 renderFoodOptions\cf4 \strokec4 (i) \{ 
+\f1\i \cf5 \strokec5 // This function writes all food options to the DOM as clickable radio buttons.
+\f0\i0 \cf4 \cb1 \strokec4 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf4 \cb3   
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 retrieveAllWines\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 JSON\cf4 \strokec4 .\cf7 \strokec7 parse\cf4 \strokec4 (\cf7 \strokec7 localStorage\cf4 \strokec4 .\cf7 \strokec7 getItem\cf4 \strokec4 (\cf2 \strokec2 'allWinesKey'\cf4 \strokec4 ));\cb1 \
+\
+\cb3   
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 protein\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 retrieveAllWines\cf4 \strokec4 [\cf7 \strokec7 i\cf4 \strokec4 ].\cf7 \strokec7 protein\cf4 \strokec4 ;\cb1 \
+\cb3   
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 vegetables\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 retrieveAllWines\cf4 \strokec4 [\cf7 \strokec7 i\cf4 \strokec4 ].\cf7 \strokec7 veg\cf4 \strokec4 ;\cb1 \
+\cb3   
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 smallPlates\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 retrieveAllWines\cf4 \strokec4 [\cf7 \strokec7 i\cf4 \strokec4 ].\cf7 \strokec7 smallPlate\cf4 \strokec4 ;\cb1 \
+\cb3   
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 dessert\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 retrieveAllWines\cf4 \strokec4 [\cf7 \strokec7 i\cf4 \strokec4 ].\cf7 \strokec7 dessert\cf4 \strokec4 ;\cb1 \
+\
+\cb3   \cf8 \strokec8 for\cf4 \strokec4  (
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 j\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf9 \strokec9 0\cf4 \strokec4 ; \cf7 \strokec7 j\cf4 \strokec4  \cf8 \strokec8 <\cf4 \strokec4  \cf7 \strokec7 retrieveAllWines\cf4 \strokec4 [\cf7 \strokec7 i\cf4 \strokec4 ].\cf7 \strokec7 protein\cf4 \strokec4 .length; \cf7 \strokec7 j\cf8 \strokec8 ++\cf4 \strokec4 ) \{\cb1 \
+\cb3     
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 radioLabel\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 document\cf4 \strokec4 .\cf7 \strokec7 createElement\cf4 \strokec4 (\cf2 \strokec2 'label'\cf4 \strokec4 );\cb1 \
+\cb3     \cf7 \strokec7 radioLabel\cf4 \strokec4 .\cf7 \strokec7 setAttribute\cf4 \strokec4 (\cf2 \strokec2 'class'\cf4 \strokec4 , \cf2 \strokec2 'radioLabel'\cf4 \strokec4 ); 
+\f1\i \cf5 \strokec5 //added radio label class
+\f0\i0 \cf4 \cb1 \strokec4 \
+\cb3     \cf7 \strokec7 radioLabel\cf4 \strokec4 .\cf7 \strokec7 textContent\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 protein\cf4 \strokec4 [\cf7 \strokec7 j\cf4 \strokec4 ];\cb1 \
+\cb3     
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 foodChild\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 document\cf4 \strokec4 .\cf7 \strokec7 createElement\cf4 \strokec4 (\cf2 \strokec2 'input'\cf4 \strokec4 );\cb1 \
+\
+\cb3     \cf7 \strokec7 foodChild\cf4 \strokec4 .\cf7 \strokec7 setAttribute\cf4 \strokec4 (\cf2 \strokec2 'class'\cf4 \strokec4 , \cf2 \strokec2 'radioButton'\cf4 \strokec4 ); 
+\f1\i \cf5 \strokec5 //added radio button class
+\f0\i0 \cf4 \cb1 \strokec4 \
+\cb3     \cf7 \strokec7 foodChild\cf4 \strokec4 .\cf7 \strokec7 setAttribute\cf4 \strokec4 (\cf2 \strokec2 'required'\cf4 \strokec4 , \cf2 \strokec2 'true'\cf4 \strokec4 ); 
+\f1\i \cf5 \strokec5 //requires radio selection
+\f0\i0 \cf4 \cb1 \strokec4 \
+\cb3     \cf7 \strokec7 foodChild\cf4 \strokec4 .\cf7 \strokec7 setAttribute\cf4 \strokec4 (\cf2 \strokec2 'value'\cf4 \strokec4 , \cf7 \strokec7 protein\cf4 \strokec4 [\cf7 \strokec7 j\cf4 \strokec4 ]);\cb1 \
+\
+\cb3     \cf7 \strokec7 foodChild\cf4 \strokec4 .\cf7 \strokec7 setAttribute\cf4 \strokec4 (\cf2 \strokec2 'type'\cf4 \strokec4 , \cf2 \strokec2 'radio'\cf4 \strokec4 );\cb1 \
+\cb3     \cf7 \strokec7 radioLabel\cf4 \strokec4 .\cf7 \strokec7 setAttribute\cf4 \strokec4 (\cf2 \strokec2 'class'\cf4 \strokec4 , \cf2 \strokec2 'selectedFood'\cf4 \strokec4 );\cb1 \
+\cb3     \cf7 \strokec7 foodChild\cf4 \strokec4 .\cf7 \strokec7 setAttribute\cf4 \strokec4 (\cf2 \strokec2 'name'\cf4 \strokec4 , \cf2 \strokec2 'protein'\cf4 \strokec4 );\cb1 \
+\cb3     \cf7 \strokec7 radioLabel\cf4 \strokec4 .\cf7 \strokec7 appendChild\cf4 \strokec4 (\cf7 \strokec7 foodChild\cf4 \strokec4 );\cb1 \
+\cb3     
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 sectionParent\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 document\cf4 \strokec4 .\cf7 \strokec7 getElementById\cf4 \strokec4 (\cf2 \strokec2 'protein'\cf4 \strokec4 );\cb1 \
+\cb3     \cf7 \strokec7 sectionParent\cf4 \strokec4 .\cf7 \strokec7 appendChild\cf4 \strokec4 (\cf7 \strokec7 radioLabel\cf4 \strokec4 );\cb1 \
+\cb3   \}\cb1 \
+\
+\cb3   \cf8 \strokec8 for\cf4 \strokec4  (
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 k\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf9 \strokec9 0\cf4 \strokec4 ; \cf7 \strokec7 k\cf4 \strokec4  \cf8 \strokec8 <\cf4 \strokec4  \cf7 \strokec7 retrieveAllWines\cf4 \strokec4 [\cf7 \strokec7 i\cf4 \strokec4 ].\cf7 \strokec7 veg\cf4 \strokec4 .length; \cf7 \strokec7 k\cf8 \strokec8 ++\cf4 \strokec4 ) \{\cb1 \
+\cb3     
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 radioLabelv\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 document\cf4 \strokec4 .\cf7 \strokec7 createElement\cf4 \strokec4 (\cf2 \strokec2 'label'\cf4 \strokec4 );\cb1 \
+\cb3     \cf7 \strokec7 radioLabelv\cf4 \strokec4 .\cf7 \strokec7 setAttribute\cf4 \strokec4 (\cf2 \strokec2 'class'\cf4 \strokec4 , \cf2 \strokec2 'radioLabel'\cf4 \strokec4 ); 
+\f1\i \cf5 \strokec5 //added radio label class
+\f0\i0 \cf4 \cb1 \strokec4 \
+\cb3     \cf7 \strokec7 radioLabelv\cf4 \strokec4 .\cf7 \strokec7 textContent\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 vegetables\cf4 \strokec4 [\cf7 \strokec7 k\cf4 \strokec4 ];\cb1 \
+\cb3     
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 foodChildv\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 document\cf4 \strokec4 .\cf7 \strokec7 createElement\cf4 \strokec4 (\cf2 \strokec2 'input'\cf4 \strokec4 );\cb1 \
+\cb3     \cf7 \strokec7 foodChildv\cf4 \strokec4 .\cf7 \strokec7 setAttribute\cf4 \strokec4 (\cf2 \strokec2 'class'\cf4 \strokec4 , \cf2 \strokec2 'radioButton'\cf4 \strokec4 ); 
+\f1\i \cf5 \strokec5 //added radio button class
+\f0\i0 \cf4 \cb1 \strokec4 \
+\cb3     \cf7 \strokec7 foodChildv\cf4 \strokec4 .\cf7 \strokec7 setAttribute\cf4 \strokec4 (\cf2 \strokec2 'required'\cf4 \strokec4 , \cf2 \strokec2 'true'\cf4 \strokec4 ); 
+\f1\i \cf5 \strokec5 //requires radio selection
+\f0\i0 \cf4 \cb1 \strokec4 \
+\cb3     \cf7 \strokec7 foodChildv\cf4 \strokec4 .\cf7 \strokec7 setAttribute\cf4 \strokec4 (\cf2 \strokec2 'type'\cf4 \strokec4 , \cf2 \strokec2 'radio'\cf4 \strokec4 );\cb1 \
+\cb3     \cf7 \strokec7 radioLabelv\cf4 \strokec4 .\cf7 \strokec7 setAttribute\cf4 \strokec4 (\cf2 \strokec2 'class'\cf4 \strokec4 , \cf2 \strokec2 'selectedFood'\cf4 \strokec4 );\cb1 \
+\cb3     \cf7 \strokec7 foodChildv\cf4 \strokec4 .\cf7 \strokec7 setAttribute\cf4 \strokec4 (\cf2 \strokec2 'name'\cf4 \strokec4 , \cf2 \strokec2 'vegetables'\cf4 \strokec4 );\cb1 \
+\cb3     \cf7 \strokec7 foodChildv\cf4 \strokec4 .\cf7 \strokec7 setAttribute\cf4 \strokec4 (\cf2 \strokec2 'value'\cf4 \strokec4 , \cf7 \strokec7 vegetables\cf4 \strokec4 [\cf7 \strokec7 k\cf4 \strokec4 ]);\cb1 \
+\cb3     \cf7 \strokec7 radioLabelv\cf4 \strokec4 .\cf7 \strokec7 appendChild\cf4 \strokec4 (\cf7 \strokec7 foodChildv\cf4 \strokec4 );\cb1 \
+\cb3     
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 sectionParentv\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 document\cf4 \strokec4 .\cf7 \strokec7 getElementById\cf4 \strokec4 (\cf2 \strokec2 'vegetables'\cf4 \strokec4 );\cb1 \
+\cb3     \cf7 \strokec7 sectionParentv\cf4 \strokec4 .\cf7 \strokec7 appendChild\cf4 \strokec4 (\cf7 \strokec7 radioLabelv\cf4 \strokec4 );\cb1 \
+\cb3   \}\cb1 \
+\
+\cb3   \cf8 \strokec8 for\cf4 \strokec4  (
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 l\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf9 \strokec9 0\cf4 \strokec4 ; \cf7 \strokec7 l\cf4 \strokec4  \cf8 \strokec8 <\cf4 \strokec4  \cf7 \strokec7 retrieveAllWines\cf4 \strokec4 [\cf7 \strokec7 i\cf4 \strokec4 ].\cf7 \strokec7 smallPlate\cf4 \strokec4 .length; \cf7 \strokec7 l\cf8 \strokec8 ++\cf4 \strokec4 ) \{\cb1 \
+\cb3     
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 radioLabelSp\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 document\cf4 \strokec4 .\cf7 \strokec7 createElement\cf4 \strokec4 (\cf2 \strokec2 'label'\cf4 \strokec4 );\cb1 \
+\cb3     \cf7 \strokec7 radioLabelSp\cf4 \strokec4 .\cf7 \strokec7 setAttribute\cf4 \strokec4 (\cf2 \strokec2 'class'\cf4 \strokec4 , \cf2 \strokec2 'radioLabel'\cf4 \strokec4 ); 
+\f1\i \cf5 \strokec5 //added radio label class
+\f0\i0 \cf4 \cb1 \strokec4 \
+\cb3     \cf7 \strokec7 radioLabelSp\cf4 \strokec4 .\cf7 \strokec7 textContent\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 smallPlates\cf4 \strokec4 [\cf7 \strokec7 l\cf4 \strokec4 ];\cb1 \
+\
+\cb3     
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 foodChildSp\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 document\cf4 \strokec4 .\cf7 \strokec7 createElement\cf4 \strokec4 (\cf2 \strokec2 'input'\cf4 \strokec4 );\cb1 \
+\cb3     \cf7 \strokec7 foodChildSp\cf4 \strokec4 .\cf7 \strokec7 setAttribute\cf4 \strokec4 (\cf2 \strokec2 'class'\cf4 \strokec4 , \cf2 \strokec2 'radioButton'\cf4 \strokec4 ); 
+\f1\i \cf5 \strokec5 //added radio button class
+\f0\i0 \cf4 \cb1 \strokec4 \
+\cb3     \cf7 \strokec7 foodChildSp\cf4 \strokec4 .\cf7 \strokec7 setAttribute\cf4 \strokec4 (\cf2 \strokec2 'required'\cf4 \strokec4 , \cf2 \strokec2 'true'\cf4 \strokec4 ); 
+\f1\i \cf5 \strokec5 //requires radio selection
+\f0\i0 \cf4 \cb1 \strokec4 \
+\cb3     \cf7 \strokec7 foodChildSp\cf4 \strokec4 .\cf7 \strokec7 setAttribute\cf4 \strokec4 (\cf2 \strokec2 'type'\cf4 \strokec4 , \cf2 \strokec2 'radio'\cf4 \strokec4 );\cb1 \
+\cb3     \cf7 \strokec7 radioLabelSp\cf4 \strokec4 .\cf7 \strokec7 setAttribute\cf4 \strokec4 (\cf2 \strokec2 'class'\cf4 \strokec4 , \cf2 \strokec2 'selectedFood'\cf4 \strokec4 );\cb1 \
+\cb3     \cf7 \strokec7 foodChildSp\cf4 \strokec4 .\cf7 \strokec7 setAttribute\cf4 \strokec4 (\cf2 \strokec2 'name'\cf4 \strokec4 , \cf2 \strokec2 'smallPlates'\cf4 \strokec4 );\cb1 \
+\cb3     \cf7 \strokec7 foodChildSp\cf4 \strokec4 .\cf7 \strokec7 setAttribute\cf4 \strokec4 (\cf2 \strokec2 'value'\cf4 \strokec4 , \cf7 \strokec7 smallPlates\cf4 \strokec4 [\cf7 \strokec7 l\cf4 \strokec4 ]);\cb1 \
+\cb3     \cf7 \strokec7 radioLabelSp\cf4 \strokec4 .\cf7 \strokec7 appendChild\cf4 \strokec4 (\cf7 \strokec7 foodChildSp\cf4 \strokec4 );\cb1 \
+\cb3     
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 sectionParentSp\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 document\cf4 \strokec4 .\cf7 \strokec7 getElementById\cf4 \strokec4 (\cf2 \strokec2 'small-plates'\cf4 \strokec4 );\cb1 \
+\cb3     \cf7 \strokec7 sectionParentSp\cf4 \strokec4 .\cf7 \strokec7 appendChild\cf4 \strokec4 (\cf7 \strokec7 radioLabelSp\cf4 \strokec4 );\cb1 \
+\cb3   \}\cb1 \
+\
+\cb3   \cf8 \strokec8 for\cf4 \strokec4  (
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 m\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf9 \strokec9 0\cf4 \strokec4 ; \cf7 \strokec7 m\cf4 \strokec4  \cf8 \strokec8 <\cf4 \strokec4  \cf7 \strokec7 retrieveAllWines\cf4 \strokec4 [\cf7 \strokec7 i\cf4 \strokec4 ].\cf7 \strokec7 dessert\cf4 \strokec4 .length; \cf7 \strokec7 m\cf8 \strokec8 ++\cf4 \strokec4 ) \{\cb1 \
+\cb3     
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 radioLabeld\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 document\cf4 \strokec4 .\cf7 \strokec7 createElement\cf4 \strokec4 (\cf2 \strokec2 'label'\cf4 \strokec4 );\cb1 \
+\cb3     \cf7 \strokec7 radioLabeld\cf4 \strokec4 .\cf7 \strokec7 setAttribute\cf4 \strokec4 (\cf2 \strokec2 'class'\cf4 \strokec4 , \cf2 \strokec2 'radioLabel'\cf4 \strokec4 ); 
+\f1\i \cf5 \strokec5 //added radio label class
+\f0\i0 \cf4 \cb1 \strokec4 \
+\cb3     \cf7 \strokec7 radioLabeld\cf4 \strokec4 .\cf7 \strokec7 textContent\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 dessert\cf4 \strokec4 [\cf7 \strokec7 m\cf4 \strokec4 ];\cb1 \
+\cb3     
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 foodChildd\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 document\cf4 \strokec4 .\cf7 \strokec7 createElement\cf4 \strokec4 (\cf2 \strokec2 'input'\cf4 \strokec4 );\cb1 \
+\cb3     \cf7 \strokec7 foodChildd\cf4 \strokec4 .\cf7 \strokec7 setAttribute\cf4 \strokec4 (\cf2 \strokec2 'class'\cf4 \strokec4 , \cf2 \strokec2 'radioButton'\cf4 \strokec4 ); 
+\f1\i \cf5 \strokec5 //added radio button class
+\f0\i0 \cf4 \cb1 \strokec4 \
+\cb3     \cf7 \strokec7 foodChildd\cf4 \strokec4 .\cf7 \strokec7 setAttribute\cf4 \strokec4 (\cf2 \strokec2 'required'\cf4 \strokec4 , \cf2 \strokec2 'true'\cf4 \strokec4 ); 
+\f1\i \cf5 \strokec5 //requires radio selection
+\f0\i0 \cf4 \cb1 \strokec4 \
+\cb3     \cf7 \strokec7 foodChildd\cf4 \strokec4 .\cf7 \strokec7 setAttribute\cf4 \strokec4 (\cf2 \strokec2 'type'\cf4 \strokec4 , \cf2 \strokec2 'radio'\cf4 \strokec4 );\cb1 \
+\cb3     \cf7 \strokec7 radioLabeld\cf4 \strokec4 .\cf7 \strokec7 setAttribute\cf4 \strokec4 (\cf2 \strokec2 'class'\cf4 \strokec4 , \cf2 \strokec2 'selectedFood'\cf4 \strokec4 );\cb1 \
+\cb3     \cf7 \strokec7 foodChildd\cf4 \strokec4 .\cf7 \strokec7 setAttribute\cf4 \strokec4 (\cf2 \strokec2 'name'\cf4 \strokec4 , \cf2 \strokec2 'dessert'\cf4 \strokec4 );\cb1 \
+\cb3     \cf7 \strokec7 foodChildd\cf4 \strokec4 .\cf7 \strokec7 setAttribute\cf4 \strokec4 (\cf2 \strokec2 'value'\cf4 \strokec4 , \cf7 \strokec7 dessert\cf4 \strokec4 [\cf7 \strokec7 m\cf4 \strokec4 ]);\cb1 \
+\cb3     
+\f1\i \cf5 \strokec5 //foodChildd.setAttribute('class', 'foodOption');
+\f0\i0 \cf4 \cb1 \strokec4 \
+\cb3     \cf7 \strokec7 radioLabeld\cf4 \strokec4 .\cf7 \strokec7 appendChild\cf4 \strokec4 (\cf7 \strokec7 foodChildd\cf4 \strokec4 );\cb1 \
+\cb3     
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 sectionParentd\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 document\cf4 \strokec4 .\cf7 \strokec7 getElementById\cf4 \strokec4 (\cf2 \strokec2 'desserts'\cf4 \strokec4 );\cb1 \
+\cb3     \cf7 \strokec7 sectionParentd\cf4 \strokec4 .\cf7 \strokec7 appendChild\cf4 \strokec4 (\cf7 \strokec7 radioLabeld\cf4 \strokec4 );\cb1 \
+\cb3   \}\cb1 \
+\cb3   \cf7 \strokec7 wineSelection\cf4 \strokec4 .\cf7 \strokec7 removeEventListener\cf4 \strokec4 (\cf2 \strokec2 'click'\cf4 \strokec4 , \cf7 \strokec7 varietalSelection\cf4 \strokec4 );\cb1 \
+\cb3   \cf7 \strokec7 renderSubmitButton\cf4 \strokec4 ();\cb1 \
+\cb3 \}\cb1 \
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f2\b \cf6 \cb3 \strokec6 function
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 renderSubmitButton\cf4 \strokec4 () \{ 
+\f1\i \cf5 \strokec5 // This function writes the submit button to the DOM 
+\f0\i0 \cf4 \cb1 \strokec4 \
+\
+\pard\pardeftab720\sl360\partightenfactor0
+\cf4 \cb3   \cf7 \strokec7 submitButton\cf4 \strokec4 .\cf7 \strokec7 textContent\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf2 \strokec2 'Submit Your Choices'\cf4 \strokec4 ;\cb1 \
+\cb3   \cf7 \strokec7 submitButton\cf4 \strokec4 .\cf7 \strokec7 setAttribute\cf4 \strokec4 (\cf2 \strokec2 'type'\cf4 \strokec4 , \cf2 \strokec2 'submit'\cf4 \strokec4 );\cb1 \
+\cb3   \cf7 \strokec7 submitButton\cf4 \strokec4 .\cf7 \strokec7 setAttribute\cf4 \strokec4 (\cf2 \strokec2 'id'\cf4 \strokec4 , \cf2 \strokec2 'submitbutton'\cf4 \strokec4 );\cb1 \
+\cb3   \cf7 \strokec7 foodForm\cf4 \strokec4 .\cf7 \strokec7 appendChild\cf4 \strokec4 (\cf7 \strokec7 submitButton\cf4 \strokec4 );\cb1 \
+\cb3 \}\cb1 \
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f2\b \cf6 \cb3 \strokec6 function
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 submitSelections\cf4 \strokec4 (event) \{ 
+\f1\i \cf5 \strokec5 // This call-back function responds to the submit button's click listener to push the chosen items in an array called mealArray; it then turns the event listener off.
+\f0\i0 \cf4 \cb1 \strokec4 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf4 \cb3   \cf7 \strokec7 event\cf4 \strokec4 .\cf7 \strokec7 preventDefault\cf4 \strokec4 ();\cb1 \
+\cb3   \cf8 \strokec8 for\cf4 \strokec4  (
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 i\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf9 \strokec9 0\cf4 \strokec4 ; \cf7 \strokec7 i\cf4 \strokec4  \cf8 \strokec8 <\cf4 \strokec4  \cf7 \strokec7 event\cf4 \strokec4 .\cf7 \strokec7 target\cf4 \strokec4 .length; \cf7 \strokec7 i\cf8 \strokec8 ++\cf4 \strokec4 ) \{\cb1 \
+\cb3     \cf8 \strokec8 if\cf4 \strokec4  (\cf7 \strokec7 event\cf4 \strokec4 .\cf7 \strokec7 target\cf4 \strokec4 [\cf7 \strokec7 i\cf4 \strokec4 ].\cf7 \strokec7 checked\cf4 \strokec4  \cf8 \strokec8 ===\cf4 \strokec4  \cf10 \strokec10 true\cf4 \strokec4 ) \{\cb1 \
+\cb3       \cf7 \strokec7 mealArray\cf4 \strokec4 .\cf7 \strokec7 push\cf4 \strokec4 (\cf7 \strokec7 event\cf4 \strokec4 .\cf7 \strokec7 target\cf4 \strokec4 [\cf7 \strokec7 i\cf4 \strokec4 ].\cf7 \strokec7 value\cf4 \strokec4 );\cb1 \
+\cb3     \}\cb1 \
+\cb3   \}\cb1 \
+\cb3   \cf7 \strokec7 initiateStorage\cf4 \strokec4 ();\cb1 \
+\cb3   \cf7 \strokec7 turnOffEventListeners\cf4 \strokec4 ();\cb1 \
+\cb3   \cf7 \strokec7 window\cf4 \strokec4 .\cf7 \strokec7 open\cf4 \strokec4 (\cf2 \strokec2 '../pages/yourWineRack.html'\cf4 \strokec4 , \cf2 \strokec2 '_self'\cf4 \strokec4 );\cb1 \
+\cb3 \}\cb1 \
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f2\b \cf6 \cb3 \strokec6 function
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 initiateStorage\cf4 \strokec4 () \{ 
+\f1\i \cf5 \strokec5 // This function stores the meal plan in local storage.
+\f0\i0 \cf4 \cb1 \strokec4 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf4 \cb3   
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 oldMealsFromStorage\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 localStorage\cf4 \strokec4 .\cf7 \strokec7 getItem\cf4 \strokec4 (\cf2 \strokec2 'allUserMeals'\cf4 \strokec4 );\cb1 \
+\cb3   
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 parsedOldMealsFromStorage\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 JSON\cf4 \strokec4 .\cf7 \strokec7 parse\cf4 \strokec4 (\cf7 \strokec7 oldMealsFromStorage\cf4 \strokec4 );\cb1 \
+\
+\cb3   \cf8 \strokec8 if\cf4 \strokec4  (\cf7 \strokec7 parsedOldMealsFromStorage\cf4 \strokec4 ) \{\cb1 \
+\cb3     \cf7 \strokec7 allMealPlans\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 parsedOldMealsFromStorage\cf4 \strokec4 ;\cb1 \
+\cb3   \}\cb1 \
+\cb3   \cf7 \strokec7 allMealPlans\cf4 \strokec4 .\cf7 \strokec7 push\cf4 \strokec4 (\cf7 \strokec7 mealArray\cf4 \strokec4 );\cb1 \
+\
+\cb3   
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 stringifyAllMealPlans\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 JSON\cf4 \strokec4 .\cf7 \strokec7 stringify\cf4 \strokec4 (\cf7 \strokec7 allMealPlans\cf4 \strokec4 );\cb1 \
+\cb3   \cf7 \strokec7 localStorage\cf4 \strokec4 .\cf7 \strokec7 setItem\cf4 \strokec4 (\cf2 \strokec2 'allUserMeals'\cf4 \strokec4 , \cf7 \strokec7 stringifyAllMealPlans\cf4 \strokec4 );\cb1 \
+\
+\cb3   
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 allMealPlansStringified\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 JSON\cf4 \strokec4 .\cf7 \strokec7 stringify\cf4 \strokec4 (\cf7 \strokec7 allMealPlans\cf4 \strokec4 );\cb1 \
+\cb3   \cf7 \strokec7 localStorage\cf4 \strokec4 .\cf7 \strokec7 setItem\cf4 \strokec4 (\cf2 \strokec2 'allUserMeals'\cf4 \strokec4 , \cf7 \strokec7 allMealPlansStringified\cf4 \strokec4 );\cb1 \
+\cb3 \}\cb1 \
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f2\b \cf6 \cb3 \strokec6 function
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 renderMealPlan\cf4 \strokec4 () \{ 
+\f1\i \cf5 \strokec5 // This function takes the meal plans out of local storage and writes them to the DOM in the form of a table.
+\f0\i0 \cf4 \cb1 \strokec4 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf4 \cb3   
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 retrieveStorage\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 localStorage\cf4 \strokec4 .\cf7 \strokec7 getItem\cf4 \strokec4 (\cf2 \strokec2 'allUserMeals'\cf4 \strokec4 );\cb1 \
+\cb3   
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 parsedStorage\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 JSON\cf4 \strokec4 .\cf7 \strokec7 parse\cf4 \strokec4 (\cf7 \strokec7 retrieveStorage\cf4 \strokec4 );\cb1 \
+\cb3   
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 theadParent\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 document\cf4 \strokec4 .\cf7 \strokec7 getElementById\cf4 \strokec4 (\cf2 \strokec2 'theadParent'\cf4 \strokec4 );\cb1 \
+\
+\cb3   \cf8 \strokec8 for\cf4 \strokec4  (
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 i\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf9 \strokec9 0\cf4 \strokec4 ; \cf7 \strokec7 i\cf4 \strokec4  \cf8 \strokec8 <\cf4 \strokec4  \cf7 \strokec7 parsedStorage\cf4 \strokec4 .length; \cf7 \strokec7 i\cf8 \strokec8 ++\cf4 \strokec4 ) \{\cb1 \
+\cb3     
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 trElement\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 document\cf4 \strokec4 .\cf7 \strokec7 createElement\cf4 \strokec4 (\cf2 \strokec2 'tr'\cf4 \strokec4 );\cb1 \
+\cb3     \cf8 \strokec8 for\cf4 \strokec4  (
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 j\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf9 \strokec9 0\cf4 \strokec4 ; \cf7 \strokec7 j\cf4 \strokec4  \cf8 \strokec8 <\cf4 \strokec4  \cf9 \strokec9 5\cf4 \strokec4 ; \cf7 \strokec7 j\cf8 \strokec8 ++\cf4 \strokec4 ) \{\cb1 \
+\
+\cb3       
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 tdElement\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 document\cf4 \strokec4 .\cf7 \strokec7 createElement\cf4 \strokec4 (\cf2 \strokec2 'td'\cf4 \strokec4 );\cb1 \
+\cb3       \cf7 \strokec7 tdElement\cf4 \strokec4 .\cf7 \strokec7 textContent\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 parsedStorage\cf4 \strokec4 [\cf7 \strokec7 i\cf4 \strokec4 ][\cf7 \strokec7 j\cf4 \strokec4 ];\cb1 \
+\cb3       \cf7 \strokec7 trElement\cf4 \strokec4 .\cf7 \strokec7 appendChild\cf4 \strokec4 (\cf7 \strokec7 tdElement\cf4 \strokec4 );\cb1 \
+\cb3     \}\cb1 \
+\cb3     \cf7 \strokec7 theadParent\cf4 \strokec4 .\cf7 \strokec7 appendChild\cf4 \strokec4 (\cf7 \strokec7 trElement\cf4 \strokec4 );\cb1 \
+\cb3   \}\cb1 \
+\cb3 \}\cb1 \
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f2\b \cf6 \cb3 \strokec6 function
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 determineHTMLPage\cf4 \strokec4 () \{ 
+\f1\i \cf5 \strokec5 // This function determines which HTML page the user is on to ensure that the correct JS runs.
+\f0\i0 \cf4 \cb1 \strokec4 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf4 \cb3   \cf8 \strokec8 if\cf4 \strokec4  (\cf7 \strokec7 document\cf4 \strokec4 .\cf7 \strokec7 URL\cf4 \strokec4 .\cf7 \strokec7 includes\cf4 \strokec4 (\cf2 \strokec2 'reds.html'\cf4 \strokec4 ) \cf8 \strokec8 ||\cf4 \strokec4  \cf7 \strokec7 document\cf4 \strokec4 .\cf7 \strokec7 URL\cf4 \strokec4 .\cf7 \strokec7 includes\cf4 \strokec4 (\cf2 \strokec2 'whites.html'\cf4 \strokec4 ) \cf8 \strokec8 ||\cf4 \strokec4  \cf7 \strokec7 document\cf4 \strokec4 .\cf7 \strokec7 URL\cf4 \strokec4 .\cf7 \strokec7 includes\cf4 \strokec4 (\cf2 \strokec2 'bubbles.html'\cf4 \strokec4 ) \cf8 \strokec8 ||\cf4 \strokec4  \cf7 \strokec7 document\cf4 \strokec4 .\cf7 \strokec7 URL\cf4 \strokec4 .\cf7 \strokec7 includes\cf4 \strokec4 (\cf2 \strokec2 'desserts.html'\cf4 \strokec4 )) \{\cb1 \
+\cb3     \cf7 \strokec7 wineSelection\cf4 \strokec4 .\cf7 \strokec7 addEventListener\cf4 \strokec4 (\cf2 \strokec2 'click'\cf4 \strokec4 , \cf7 \strokec7 varietalSelection\cf4 \strokec4 );\cb1 \
+\cb3     \cf7 \strokec7 foodForm\cf4 \strokec4 .\cf7 \strokec7 addEventListener\cf4 \strokec4 (\cf2 \strokec2 'submit'\cf4 \strokec4 , \cf7 \strokec7 submitSelections\cf4 \strokec4 );\cb1 \
+\cb3   \}\cb1 \
+\cb3 \}\cb1 \
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f2\b \cf6 \cb3 \strokec6 function
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 turnOffEventListeners\cf4 \strokec4 () \{ 
+\f1\i \cf5 \strokec5 // This function turns off both event listeners.
+\f0\i0 \cf4 \cb1 \strokec4 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf4 \cb3   \cf7 \strokec7 wineSelection\cf4 \strokec4 .\cf7 \strokec7 removeEventListener\cf4 \strokec4 (\cf2 \strokec2 'click'\cf4 \strokec4 , \cf7 \strokec7 varietalSelection\cf4 \strokec4 );\cb1 \
+\cb3   \cf7 \strokec7 foodForm\cf4 \strokec4 .\cf7 \strokec7 removeEventListener\cf4 \strokec4 (\cf2 \strokec2 'submit'\cf4 \strokec4 , \cf7 \strokec7 submitSelections\cf4 \strokec4 );\cb1 \
+\cb3 \}\cb1 \
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f2\b \cf6 \cb3 \strokec6 function
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 runRenderMealPlan\cf4 \strokec4 () \{ 
+\f1\i \cf5 \strokec5 // This function makes sure that the user is on the personalized wine rack page before selections to the table.
+\f0\i0 \cf4 \cb1 \strokec4 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf4 \cb3   \cf8 \strokec8 if\cf4 \strokec4  (\cf7 \strokec7 document\cf4 \strokec4 .\cf7 \strokec7 URL\cf4 \strokec4 .\cf7 \strokec7 includes\cf4 \strokec4 (\cf2 \strokec2 'yourWineRack.html'\cf4 \strokec4 )) \{\cb1 \
+\cb3     \cf7 \strokec7 renderMealPlan\cf4 \strokec4 ();\cb1 \
+\cb3     \cf7 \strokec7 submitButtonTwoElectricBoogaloo\cf4 \strokec4 .\cf7 \strokec7 addEventListener\cf4 \strokec4 (\cf2 \strokec2 'submit'\cf4 \strokec4 , \cf7 \strokec7 newWineCapture\cf4 \strokec4 );\cb1 \
+\cb3   \}\cb1 \
+\cb3 \}\cb1 \
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f2\b \cf6 \cb3 \strokec6 function
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 newWineCapture\cf4 \strokec4 (event) \{\cb1 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf4 \cb3   \cf7 \strokec7 event\cf4 \strokec4 .\cf7 \strokec7 preventDefault\cf4 \strokec4 ();\cb1 \
+\cb3   
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 newVarietal\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 event\cf4 \strokec4 .\cf7 \strokec7 target\cf4 \strokec4 .\cf7 \strokec7 wineVarietal\cf4 \strokec4 .\cf7 \strokec7 value\cf4 \strokec4 ;\cb1 \
+\cb3   
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 newProtein\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 event\cf4 \strokec4 .\cf7 \strokec7 target\cf4 \strokec4 .\cf7 \strokec7 wineProtein\cf4 \strokec4 .\cf7 \strokec7 value\cf4 \strokec4 ;\cb1 \
+\cb3   
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 newVegetable\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 event\cf4 \strokec4 .\cf7 \strokec7 target\cf4 \strokec4 .\cf7 \strokec7 wineVegetable\cf4 \strokec4 .\cf7 \strokec7 value\cf4 \strokec4 ;\cb1 \
+\cb3   
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 newSmallPlate\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 event\cf4 \strokec4 .\cf7 \strokec7 target\cf4 \strokec4 .\cf7 \strokec7 wineSmallPlate\cf4 \strokec4 .\cf7 \strokec7 value\cf4 \strokec4 ;\cb1 \
+\cb3   
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 newDessert\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 event\cf4 \strokec4 .\cf7 \strokec7 target\cf4 \strokec4 .\cf7 \strokec7 wineDessert\cf4 \strokec4 .\cf7 \strokec7 value\cf4 \strokec4 ;\cb1 \
+\cb3   \cf7 \strokec7 updateWineObjects\cf4 \strokec4 (\cf7 \strokec7 newVarietal\cf4 \strokec4 , \cf7 \strokec7 newProtein\cf4 \strokec4 , \cf7 \strokec7 newVegetable\cf4 \strokec4 , \cf7 \strokec7 newSmallPlate\cf4 \strokec4 , \cf7 \strokec7 newDessert\cf4 \strokec4 );\cb1 \
+\
+\cb3   \cf7 \strokec7 mergeStorage\cf4 \strokec4 (\cf7 \strokec7 newVarietal\cf4 \strokec4 , \cf7 \strokec7 newProtein\cf4 \strokec4 , \cf7 \strokec7 newVegetable\cf4 \strokec4 , \cf7 \strokec7 newSmallPlate\cf4 \strokec4 , \cf7 \strokec7 newDessert\cf4 \strokec4 );\cb1 \
+\cb3 \}\cb1 \
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f2\b \cf6 \cb3 \strokec6 function
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 mergeStorage\cf4 \strokec4 (newVarietal, newProtein, newVegetable, newSmallPlate, newDessert) \{\cb1 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf4 \cb3   
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 extantMealStorage\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 JSON\cf4 \strokec4 .\cf7 \strokec7 parse\cf4 \strokec4 (\cf7 \strokec7 localStorage\cf4 \strokec4 .\cf7 \strokec7 getItem\cf4 \strokec4 (\cf2 \strokec2 'allUserMeals'\cf4 \strokec4 ));\cb1 \
+\cb3   
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 updatedMealStorage\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  [];\cb1 \
+\cb3   \cf7 \strokec7 updatedMealStorage\cf4 \strokec4 .\cf7 \strokec7 push\cf4 \strokec4 (\cf7 \strokec7 newVarietal\cf4 \strokec4 , \cf7 \strokec7 newProtein\cf4 \strokec4 , \cf7 \strokec7 newVegetable\cf4 \strokec4 , \cf7 \strokec7 newSmallPlate\cf4 \strokec4 , \cf7 \strokec7 newDessert\cf4 \strokec4 );\cb1 \
+\cb3   \cf7 \strokec7 extantMealStorage\cf4 \strokec4 .\cf7 \strokec7 push\cf4 \strokec4 (\cf7 \strokec7 updatedMealStorage\cf4 \strokec4 );\cb1 \
+\
+\cb3   
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 stringifiedExtantMealStorage\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 JSON\cf4 \strokec4 .\cf7 \strokec7 stringify\cf4 \strokec4 (\cf7 \strokec7 extantMealStorage\cf4 \strokec4 );\cb1 \
+\cb3   \cf7 \strokec7 localStorage\cf4 \strokec4 .\cf7 \strokec7 setItem\cf4 \strokec4 (\cf2 \strokec2 'allUserMeals'\cf4 \strokec4 , \cf7 \strokec7 stringifiedExtantMealStorage\cf4 \strokec4 );\cb1 \
+\cb3   \cf7 \strokec7 window\cf4 \strokec4 .\cf7 \strokec7 open\cf4 \strokec4 (\cf2 \strokec2 'yourWineRack.html'\cf4 \strokec4 , \cf2 \strokec2 '_self'\cf4 \strokec4 );\cb1 \
+\cb3 \}\cb1 \
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f2\b \cf6 \cb3 \strokec6 function
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 updateWineObjects\cf4 \strokec4 (newVarietal, newProtein, newVegetable, newSmallPlate, newDessert) \{\cb1 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf4 \cb3   
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 retrieveAllWines\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 JSON\cf4 \strokec4 .\cf7 \strokec7 parse\cf4 \strokec4 (\cf7 \strokec7 localStorage\cf4 \strokec4 .\cf7 \strokec7 getItem\cf4 \strokec4 (\cf2 \strokec2 'allWinesKey'\cf4 \strokec4 ));\cb1 \
+\
+\cb3   \cf8 \strokec8 for\cf4 \strokec4  (
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 i\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf9 \strokec9 0\cf4 \strokec4 ; \cf7 \strokec7 i\cf4 \strokec4  \cf8 \strokec8 <\cf4 \strokec4  \cf7 \strokec7 retrieveAllWines\cf4 \strokec4 .length; \cf7 \strokec7 i\cf8 \strokec8 ++\cf4 \strokec4 ) \{\cb1 \
+\cb3     \cf8 \strokec8 if\cf4 \strokec4  (\cf7 \strokec7 retrieveAllWines\cf4 \strokec4 [\cf7 \strokec7 i\cf4 \strokec4 ].\cf7 \strokec7 varietal\cf4 \strokec4  \cf8 \strokec8 ===\cf4 \strokec4  \cf7 \strokec7 newVarietal\cf4 \strokec4 ) \{\cb1 \
+\cb3       \cf7 \strokec7 retrieveAllWines\cf4 \strokec4 [\cf7 \strokec7 i\cf4 \strokec4 ].\cf7 \strokec7 protein\cf4 \strokec4 .\cf7 \strokec7 unshift\cf4 \strokec4 (\cf7 \strokec7 newProtein\cf4 \strokec4 );\cb1 \
+\cb3       \cf7 \strokec7 retrieveAllWines\cf4 \strokec4 [\cf7 \strokec7 i\cf4 \strokec4 ].\cf7 \strokec7 veg\cf4 \strokec4 .\cf7 \strokec7 unshift\cf4 \strokec4 (\cf7 \strokec7 newVegetable\cf4 \strokec4 );\cb1 \
+\cb3       \cf7 \strokec7 retrieveAllWines\cf4 \strokec4 [\cf7 \strokec7 i\cf4 \strokec4 ].\cf7 \strokec7 smallPlate\cf4 \strokec4 .\cf7 \strokec7 unshift\cf4 \strokec4 (\cf7 \strokec7 newSmallPlate\cf4 \strokec4 );\cb1 \
+\cb3       \cf7 \strokec7 retrieveAllWines\cf4 \strokec4 [\cf7 \strokec7 i\cf4 \strokec4 ].\cf7 \strokec7 dessert\cf4 \strokec4 .\cf7 \strokec7 unshift\cf4 \strokec4 (\cf7 \strokec7 newDessert\cf4 \strokec4 );\cb1 \
+\
+\cb3     \}\cb1 \
+\cb3   \}\cb1 \
+\cb3   
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 retrievedAllWinesStringified\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 JSON\cf4 \strokec4 .\cf7 \strokec7 stringify\cf4 \strokec4 (\cf7 \strokec7 retrieveAllWines\cf4 \strokec4 );\cb1 \
+\cb3   \cf7 \strokec7 localStorage\cf4 \strokec4 .\cf7 \strokec7 setItem\cf4 \strokec4 (\cf2 \strokec2 'allWinesKey'\cf4 \strokec4 , \cf7 \strokec7 retrievedAllWinesStringified\cf4 \strokec4 );\cb1 \
+\cb3 \}\cb1 \
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f2\b \cf6 \cb3 \strokec6 function
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 checkWineStorage\cf4 \strokec4 () \{\cb1 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf4 \cb3   \cf8 \strokec8 if\cf4 \strokec4  (\cf8 \strokec8 !\cf7 \strokec7 localStorage\cf4 \strokec4 .\cf7 \strokec7 allWinesKey\cf4 \strokec4 ) \{\cb1 \
+\cb3     \cf7 \strokec7 instantiateWineObjects\cf4 \strokec4 ();\cb1 \
+\cb3   \} \cf8 \strokec8 else\cf4 \strokec4  \{\cb1 \
+\cb3     
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 retrievedAllWines\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 JSON\cf4 \strokec4 .\cf7 \strokec7 parse\cf4 \strokec4 (\cf7 \strokec7 localStorage\cf4 \strokec4 .\cf7 \strokec7 getItem\cf4 \strokec4 (\cf2 \strokec2 'allWinesKey'\cf4 \strokec4 ));\cb1 \
+\
+\cb3     \cf8 \strokec8 for\cf4 \strokec4  (
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 i\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf9 \strokec9 0\cf4 \strokec4 ; \cf7 \strokec7 i\cf4 \strokec4  \cf8 \strokec8 <\cf4 \strokec4  \cf7 \strokec7 retrievedAllWines\cf4 \strokec4 .length; \cf7 \strokec7 i\cf8 \strokec8 ++\cf4 \strokec4 ) \{\cb1 \
+\cb3       
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 wineObject\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 retrievedAllWines\cf4 \strokec4 [\cf7 \strokec7 i\cf4 \strokec4 ];\cb1 \
+\cb3       
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 category\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 wineObject\cf4 \strokec4 .\cf7 \strokec7 category\cf4 \strokec4 ;\cb1 \
+\cb3       
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 varietal\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 wineObject\cf4 \strokec4 .\cf7 \strokec7 varietal\cf4 \strokec4 ;\cb1 \
+\cb3       
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 protein\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 wineObject\cf4 \strokec4 .\cf7 \strokec7 protein\cf4 \strokec4 ;\cb1 \
+\cb3       
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 vegetable\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 wineObject\cf4 \strokec4 .\cf7 \strokec7 veg\cf4 \strokec4 ;\cb1 \
+\cb3       
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 smallPlate\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 wineObject\cf4 \strokec4 .\cf7 \strokec7 smallPlate\cf4 \strokec4 ;\cb1 \
+\cb3       
+\f2\b \cf6 \strokec6 var
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 dessert\cf4 \strokec4  \cf8 \strokec8 =\cf4 \strokec4  \cf7 \strokec7 wineObject\cf4 \strokec4 .\cf7 \strokec7 dessert\cf4 \strokec4 ;\cb1 \
+\
+\cb3       \cf8 \strokec8 new\cf4 \strokec4  \cf7 \strokec7 Wine\cf4 \strokec4 (\cf7 \strokec7 category\cf4 \strokec4 , \cf7 \strokec7 varietal\cf4 \strokec4 , \cf7 \strokec7 protein\cf4 \strokec4 , \cf7 \strokec7 vegetable\cf4 \strokec4 , \cf7 \strokec7 smallPlate\cf4 \strokec4 , \cf7 \strokec7 dessert\cf4 \strokec4 );\cb1 \
+\cb3     \}\cb1 \
+\cb3   \}\cb1 \
+\cb3 \}\cb1 \
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f2\b \cf6 \cb3 \strokec6 function
+\f0\b0 \cf4 \strokec4  \cf7 \strokec7 mealPlanDelete\cf4 \strokec4 () \{ 
+\f1\i \cf5 \strokec5 // Stretch goal.
+\f0\i0 \cf4 \cb1 \strokec4 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf4 \cb3   
+\f1\i \cf5 \strokec5 // Add an event listener for the radio or delete button.
+\f0\i0 \cf4 \cb1 \strokec4 \
+\cb3   
+\f1\i \cf5 \strokec5 // Delete or update, as required.
+\f0\i0 \cf4 \cb1 \strokec4 \
+\cb3   
+\f1\i \cf5 \strokec5 // Push to local storage.
+\f0\i0 \cf4 \cb1 \strokec4 \
+\cb3 \}\cb1 \
+\
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f1\i \cf5 \cb3 \strokec5 // Executable functions
+\f0\i0 \cf4 \cb1 \strokec4 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf7 \cb3 \strokec7 determineHTMLPage\cf4 \strokec4 ();\cb1 \
+\cf7 \cb3 \strokec7 checkWineStorage\cf4 \strokec4 ();\cb1 \
+\cf7 \cb3 \strokec7 runRenderMealPlan\cf4 \strokec4 ();\cb1 \
+\
+}
