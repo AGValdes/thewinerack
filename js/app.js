@@ -177,7 +177,14 @@ function renderMealPlan() { // This function takes the meal plans out of local s
   var parsedStorage = JSON.parse(retrieveStorage);
   var theadParent = document.getElementById('theadParent');
 
-  for (var i = 0; i < parsedStorage.length; i++) {
+  if(!parsedStorage){
+    var loopLength = 0;
+  } else {
+    loopLength = parsedStorage.length;
+  }
+
+
+  for (var i = 0; i < loopLength; i++) {
     var trElement = document.createElement('tr');
     for (var j = 0; j < 5; j++) {
 
@@ -201,8 +208,16 @@ function turnOffEventListeners() { // This function turns off both event listene
   foodForm.removeEventListener('submit', submitSelections);
 }
 
+function userWinePairingSwitch (){ //This function checks to see if there is any user meals in local storage, if not it removes the user's ability to add personal wine pairings
+  if (!localStorage.allUserMeals){
+    var userPairingSection = document.getElementById('new-wine-section');
+    userPairingSection.innerHTML = '';
+  }
+}
+
 function runRenderMealPlan() { // This function makes sure that the user is on the personalized wine rack page before selections to the table.
   if (document.URL.includes('yourWineRack.html')) {
+    userWinePairingSwitch();
     renderMealPlan();
     submitButtonTwoElectricBoogaloo.addEventListener('submit', newWineCapture);
   }
