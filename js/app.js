@@ -49,7 +49,6 @@ function varietalSelection(event) { // The call-back function for our home-page 
   var captureWineCategory = event.target.value;
   for (var i = 0; i < allWines.length; i++) {
     if (captureWineCategory === allWines[i].varietal) {
-      console.log('test');
       renderFoodOptions(i);
 
       mealArray.push(allWines[i].varietal);
@@ -132,12 +131,12 @@ function renderFoodOptions(i) { // This function writes all food options to the 
     var sectionParentd = document.getElementById('desserts');
     sectionParentd.appendChild(radioLabeld);
   }
-
   wineSelection.removeEventListener('click', varietalSelection);
   renderSubmitButton();
 }
 
 function renderSubmitButton() { // This function writes the submit button to the DOM 
+
   submitButton.textContent = 'Submit Your Choices';
   submitButton.setAttribute('type', 'submit');
   submitButton.setAttribute('id', 'submitbutton');
@@ -217,21 +216,19 @@ function newWineCapture(event) {
   var newDessert = event.target.wineDessert.value;
   updateWineObjects(newVarietal, newProtein, newVegetable, newSmallPlate, newDessert);
 
-  newPairingTableRow(newVarietal, newProtein, newVegetable, newSmallPlate, newDessert);
+  mergeStorage(newVarietal, newProtein, newVegetable, newSmallPlate, newDessert);
 }
 
-function newPairingTableRow(newVarietal, newProtein, newVegetable, newSmallPlate, newDessert) {
-  var newVarietalArray = [];
-  newVarietalArray.push(newVarietal, newProtein, newVegetable, newSmallPlate, newDessert);
+function mergeStorage(newVarietal, newProtein, newVegetable, newSmallPlate, newDessert) {
+  var extantMealStorage = JSON.parse(localStorage.getItem('allUserMeals'));
+  var updatedMealStorage = [];
+  updatedMealStorage.push(newVarietal, newProtein, newVegetable, newSmallPlate, newDessert);
+  extantMealStorage.push(updatedMealStorage);
 
-  var theadParent = document.getElementById('theadParent');
-  var trElement = document.createElement('tr');
-  for (var i = 0; i < newVarietalArray.length; i++) {
-    var tdElement = document.createElement('td');
-    tdElement.textContent = newVarietalArray[i];
-    trElement.appendChild(tdElement);
-  }
-  theadParent.appendChild(trElement);
+  var stringifiedExtantMealStorage = JSON.stringify(extantMealStorage);
+  localStorage.setItem('allUserMeals', stringifiedExtantMealStorage);
+  window.open('yourWineRack.html', '_self');
+
 }
 
 function updateWineObjects(newVarietal, newProtein, newVegetable, newSmallPlate, newDessert) {
