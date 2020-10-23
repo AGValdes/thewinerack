@@ -201,8 +201,16 @@ function turnOffEventListeners() { // This function turns off both event listene
   foodForm.removeEventListener('submit', submitSelections);
 }
 
+function userWinePairingSwitch (){ //This function checks to see if there is any user meals in local storage, if not it removes the user's ability to add personal wine pairings
+  if (!localStorage.allUserMeals){
+    var userPairingSection = document.getElementById('new-wine-section');
+    userPairingSection.innerHTML = '';
+  }
+}
+
 function runRenderMealPlan() { // This function makes sure that the user is on the personalized wine rack page before selections to the table.
   if (document.URL.includes('yourWineRack.html')) {
+    userWinePairingSwitch();
     renderMealPlan();
     submitButtonTwoElectricBoogaloo.addEventListener('submit', newWineCapture);
   }
