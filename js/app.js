@@ -177,7 +177,14 @@ function renderMealPlan() { // This function takes the meal plans out of local s
   var parsedStorage = JSON.parse(retrieveStorage);
   var theadParent = document.getElementById('theadParent');
 
-  for (var i = 0; i < parsedStorage.length; i++) {
+  if(!parsedStorage){
+    var loopLength = 0;
+  } else {
+    loopLength = parsedStorage.length;
+  }
+
+
+  for (var i = 0; i < loopLength; i++) {
     var trElement = document.createElement('tr');
     for (var j = 0; j < 5; j++) {
 
