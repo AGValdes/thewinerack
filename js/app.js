@@ -7,6 +7,7 @@ var mealArray = [];
 var wineSelection = document.getElementById('redWineList');
 var submitButton = document.createElement('button');
 var foodForm = document.getElementById('food-parent');
+var submitButtonTwoElectricBoogaloo = document.getElementById('new-wine');
 
 // Functions
 function Wine(category, varietal, protein = [], veg = [], smallPlate = [], dessert = []) { // This constructor function makes wine object instances.
@@ -39,29 +40,32 @@ function instantiateWineObjects() { // This function defines the hard-coded wine
   new Wine('Bubbles', 'Sparkling Rosé', ['Salmon', 'No, Thank You'], ['No Pairing', 'No, Thank You'], ['Caesar Salad', 'Smoked Salmon', 'No, Thank You'], ['Cheese Plate', 'Baked Brie', 'No, Thank You']);
   new Wine('Bubbles', 'Prosecco', ['Shellfish', 'Chicken', 'Turkey', 'Duck', 'No, Thank You'], ['Potatoes', 'No, Thank You'], ['French Fries', 'Calamari', 'Fried Veggie Fritters', 'No, Thank You'], ['Cheese Cake', 'Fruit Tart', 'Cheese Plate', 'No, Thank You']);
   new Wine('Bubbles', 'Champagne', ['Shellfish', 'Chicken', 'Turkey', 'Duck', 'No, Thank You'], ['Potatoes', 'No, Thank You'], ['French Fries', 'Calamari', 'Fried Veggie Fritters', 'No, Thank You'], ['Raspberry Cheese Cake', 'Fruit Tart', 'Cheese Plate', 'No, Thank You']);
+
+  var allWinesAsAString = JSON.stringify(allWines);
+  localStorage.setItem('allWinesKey', allWinesAsAString);
 }
 
 function varietalSelection(event) { // The call-back function for our home-page wine button listener.
   var captureWineCategory = event.target.value;
   for (var i = 0; i < allWines.length; i++) {
     if (captureWineCategory === allWines[i].varietal) {
+      console.log('test');
       renderFoodOptions(i);
 
       mealArray.push(allWines[i].varietal);
     }
   }
-
-  // console.log(captureWineCategory);
-  // console.log(i);
 }
 
 function renderFoodOptions(i) { // This function writes all food options to the DOM as clickable radio buttons.
-  var protein = allWines[i].protein;
-  var vegetables = allWines[i].veg;
-  var smallPlates = allWines[i].smallPlate;
-  var dessert = allWines[i].dessert;
+  var retrieveAllWines = JSON.parse(localStorage.getItem('allWinesKey'));
 
-  for (var j = 0; j < allWines[i].protein.length; j++) {
+  var protein = retrieveAllWines[i].protein;
+  var vegetables = retrieveAllWines[i].veg;
+  var smallPlates = retrieveAllWines[i].smallPlate;
+  var dessert = retrieveAllWines[i].dessert;
+
+  for (var j = 0; j < retrieveAllWines[i].protein.length; j++) {
     var radioLabel = document.createElement('label');
     radioLabel.setAttribute('class', 'radioLabel'); //added radio label class
     radioLabel.textContent = protein[j];
@@ -79,7 +83,7 @@ function renderFoodOptions(i) { // This function writes all food options to the 
     sectionParent.appendChild(radioLabel);
   }
 
-  for (var k = 0; k < allWines[i].veg.length; k++) {
+  for (var k = 0; k < retrieveAllWines[i].veg.length; k++) {
     var radioLabelv = document.createElement('label');
     radioLabelv.setAttribute('class', 'radioLabel'); //added radio label class
     radioLabelv.textContent = vegetables[k];
@@ -95,7 +99,7 @@ function renderFoodOptions(i) { // This function writes all food options to the 
     sectionParentv.appendChild(radioLabelv);
   }
 
-  for (var l = 0; l < allWines[i].smallPlate.length; l++) {
+  for (var l = 0; l < retrieveAllWines[i].smallPlate.length; l++) {
     var radioLabelSp = document.createElement('label');
     radioLabelSp.setAttribute('class', 'radioLabel'); //added radio label class
     radioLabelSp.textContent = smallPlates[l];
@@ -112,7 +116,7 @@ function renderFoodOptions(i) { // This function writes all food options to the 
     sectionParentSp.appendChild(radioLabelSp);
   }
 
-  for (var m = 0; m < allWines[i].dessert.length; m++) {
+  for (var m = 0; m < retrieveAllWines[i].dessert.length; m++) {
     var radioLabeld = document.createElement('label');
     radioLabeld.setAttribute('class', 'radioLabel'); //added radio label class
     radioLabeld.textContent = dessert[m];
@@ -131,7 +135,6 @@ function renderFoodOptions(i) { // This function writes all food options to the 
 
   wineSelection.removeEventListener('click', varietalSelection);
   renderSubmitButton();
-
 }
 
 function renderSubmitButton() { // This function writes the submit button to the DOM 
@@ -181,16 +184,9 @@ function renderMealPlan() { // This function takes the meal plans out of local s
       var tdElement = document.createElement('td');
       tdElement.textContent = parsedStorage[i][j];
       trElement.appendChild(tdElement);
-      console.log('parsedStorage[i][j]', parsedStorage[i][j], 'i:', i, 'j', j);
     }
     theadParent.appendChild(trElement);
   }
-}
-
-function mealPlanDelete() { // Stretch goal.
-  // Add an event listener for the radio or delete button.
-  // Delete or update, as required.
-  // Push to local storage.
 }
 
 function determineHTMLPage() { // This function determines which HTML page the user is on to ensure that the correct JS runs.
@@ -208,10 +204,80 @@ function turnOffEventListeners() { // This function turns off both event listene
 function runRenderMealPlan() { // This function makes sure that the user is on the personalized wine rack page before selections to the table.
   if (document.URL.includes('yourWineRack.html')) {
     renderMealPlan();
+    submitButtonTwoElectricBoogaloo.addEventListener('submit', newWineCapture);
   }
 }
 
+function newWineCapture(event) {
+  event.preventDefault();
+  var newVarietal = event.target.wineVarietal.value;
+  var newProtein = event.target.wineProtein.value;
+  var newVegetable = event.target.wineVegetable.value;
+  var newSmallPlate = event.target.wineSmallPlate.value;
+  var newDessert = event.target.wineDessert.value;
+  updateWineObjects(newVarietal, newProtein, newVegetable, newSmallPlate, newDessert);
+
+  newPairingTableRow(newVarietal, newProtein, newVegetable, newSmallPlate, newDessert);
+}
+
+function newPairingTableRow(newVarietal, newProtein, newVegetable, newSmallPlate, newDessert) {
+  var newVarietalArray = [];
+  newVarietalArray.push(newVarietal, newProtein, newVegetable, newSmallPlate, newDessert);
+
+  var theadParent = document.getElementById('theadParent');
+  var trElement = document.createElement('tr');
+  for (var i = 0; i < newVarietalArray.length; i++) {
+    var tdElement = document.createElement('td');
+    tdElement.textContent = newVarietalArray[i];
+    trElement.appendChild(tdElement);
+  }
+  theadParent.appendChild(trElement);
+}
+
+function updateWineObjects(newVarietal, newProtein, newVegetable, newSmallPlate, newDessert) {
+  var retrieveAllWines = JSON.parse(localStorage.getItem('allWinesKey'));
+
+  for (var i = 0; i < retrieveAllWines.length; i++) {
+    if (retrieveAllWines[i].varietal === newVarietal) {
+      retrieveAllWines[i].protein.unshift(newProtein);
+      retrieveAllWines[i].veg.unshift(newVegetable);
+      retrieveAllWines[i].smallPlate.unshift(newSmallPlate);
+      retrieveAllWines[i].dessert.unshift(newDessert);
+
+    }
+  }
+  var retrievedAllWinesStringified = JSON.stringify(retrieveAllWines);
+  localStorage.setItem('allWinesKey', retrievedAllWinesStringified);
+}
+
+function checkWineStorage() {
+  if (!localStorage.allWinesKey) {
+    instantiateWineObjects();
+  } else {
+    var retrievedAllWines = JSON.parse(localStorage.getItem('allWinesKey'));
+
+    for (var i = 0; i < retrievedAllWines.length; i++) {
+      var wineObject = retrievedAllWines[i];
+      var category = wineObject.category;
+      var varietal = wineObject.varietal;
+      var protein = wineObject.protein;
+      var vegetable = wineObject.veg;
+      var smallPlate = wineObject.smallPlate;
+      var dessert = wineObject.dessert;
+
+      new Wine(category, varietal, protein, vegetable, smallPlate, dessert);
+    }
+  }
+}
+
+function mealPlanDelete() { // Stretch goal.
+  // Add an event listener for the radio or delete button.
+  // Delete or update, as required.
+  // Push to local storage.
+}
+
+
 // Executable functions
-instantiateWineObjects();
 determineHTMLPage();
+checkWineStorage();
 runRenderMealPlan();
